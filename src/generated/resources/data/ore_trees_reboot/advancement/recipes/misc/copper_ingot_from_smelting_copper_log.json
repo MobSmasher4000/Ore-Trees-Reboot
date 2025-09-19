@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_copper_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ore_trees_reboot:copper_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ore_trees_reboot:copper_ingot_from_smelting_copper_log"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_copper_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ore_trees_reboot:copper_ingot_from_smelting_copper_log"
+    ]
+  }
+}
