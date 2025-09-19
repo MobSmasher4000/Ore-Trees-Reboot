@@ -33,7 +33,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.EMERALD_SAPLING.get())
         ;
 
-        tag(BlockTags.LOGS_THAT_BURN)
+        tag(BlockTags.LOGS)
                 .add(ModBlocks.IRON_LOG.get())
                 .add(ModBlocks.GOLD_LOG.get())
                 .add(ModBlocks.COPPER_LOG.get())
