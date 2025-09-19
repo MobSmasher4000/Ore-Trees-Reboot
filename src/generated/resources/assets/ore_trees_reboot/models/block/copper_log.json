@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ore_trees_reboot:block/copper_log_top",
+    "side": "ore_trees_reboot:block/copper_log"
+  }
+}

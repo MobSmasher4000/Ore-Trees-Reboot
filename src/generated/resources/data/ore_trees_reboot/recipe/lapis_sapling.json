@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:lapis_block"
+    },
+    "S": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BSB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ore_trees_reboot:lapis_sapling"
+  }
+}

@@ -1,0 +1,6 @@
+// 1.21.1	2025-09-19T19:20:47.4360448	Tags for minecraft:block mod id ore_trees_reboot
+81b00cd3cdf277807b4a5067d2c630cb1c254f53 data/minecraft/tags/block/leaves.json
+4def575791ba8980357cf8b58cc9c5ccf33e5cf5 data/minecraft/tags/block/logs_that_burn.json
+a8bdb18eea1d10ed7edfef00c560695a4802caa6 data/minecraft/tags/block/saplings.json
+f82f2c9a122785dc505a399b3830f339168267a6 data/ore_trees_reboot/tags/block/iron_tree_dirt.json
+a8bdb18eea1d10ed7edfef00c560695a4802caa6 data/ore_trees_reboot/tags/block/ore_saplings.json

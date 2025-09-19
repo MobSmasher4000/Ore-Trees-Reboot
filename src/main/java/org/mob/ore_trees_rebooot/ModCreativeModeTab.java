@@ -15,7 +15,7 @@ import static org.mob.ore_trees_rebooot.Ore_trees_reboot.MOD_ID;
 public class ModCreativeModeTab {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_MOD_TAB = CREATIVE_MODE_TABS.register("creative_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ore_trees_reborn")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> ModItems.Crafting_Base.get().getDefaultInstance()).displayItems((parameters, output) -> {
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_MOD_TAB = CREATIVE_MODE_TABS.register("creative_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ore_trees_reboot")).withTabsBefore(CreativeModeTabs.COMBAT).icon(() -> ModItems.Crafting_Base.get().getDefaultInstance()).displayItems((parameters, output) -> {
         output.accept(ModItems.Crafting_Base.get());
 
         output.accept(ModBlocks.IRON_LEAVES.get());
