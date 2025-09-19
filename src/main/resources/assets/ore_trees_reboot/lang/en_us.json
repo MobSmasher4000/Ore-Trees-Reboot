@@ -1,0 +1,38 @@
+{
+  "itemGroup.ore_trees_reboot": "Ore Trees Reborm",
+
+  "item.ore_trees_reboot.crafting_base": "Ore Trees Crafting Base",
+
+  "block.ore_trees_reboot.iron_sapling": "Iron Sapling",
+  "block.ore_trees_reboot.gold_sapling": "Gold Sapling",
+  "block.ore_trees_reboot.copper_sapling": "Copper Sapling",
+  "block.ore_trees_reboot.lapis_sapling": "Lapis Sapling",
+  "block.ore_trees_reboot.diamond_sapling": "Diamond Sapling",
+  "block.ore_trees_reboot.redstone_sapling": "Redstone Sapling",
+  "block.ore_trees_reboot.ancient_sapling": "Ancient Sapling",
+  "block.ore_trees_reboot.quartz_sapling": "Quartz Sapling",
+  "block.ore_trees_reboot.coal_sapling": "Coal Sapling",
+  "block.ore_trees_reboot.emerald_sapling": "Emerald Sapling",
+
+  "block.ore_trees_reboot.iron_log": "Iron Log",
+  "block.ore_trees_reboot.gold_log": "Gold Log",
+  "block.ore_trees_reboot.copper_log": "Copper Log",
+  "block.ore_trees_reboot.lapis_log": "Lapis Log",
+  "block.ore_trees_reboot.diamond_log": "Diamond Log",
+  "block.ore_trees_reboot.redstone_log": "Redstone Log",
+  "block.ore_trees_reboot.ancient_log": "Ancient Log",
+  "block.ore_trees_reboot.quartz_log": "Quartz Log",
+  "block.ore_trees_reboot.coal_log": "Coal Log",
+  "block.ore_trees_reboot.emerald_log": "Emerald Log",
+
+  "block.ore_trees_reboot.iron_leaves": "Iron Leaves",
+  "block.ore_trees_reboot.gold_leaves": "Gold Leaves",
+  "block.ore_trees_reboot.copper_leaves": "Copper Leaves",
+  "block.ore_trees_reboot.lapis_leaves": "Lapis Leaves",
+  "block.ore_trees_reboot.redstone_leaves": "Redstone Leaves",
+  "block.ore_trees_reboot.diamond_leaves": "Diamond Leaves",
+  "block.ore_trees_reboot.ancient_leaves": "Ancient Leaves",
+  "block.ore_trees_reboot.quartz_leaves": "Quartz Leaves",
+  "block.ore_trees_reboot.coal_leaves": "Coal Leaves",
+  "block.ore_trees_reboot.emerald_leaves": "Emerald Leaves"
+}
