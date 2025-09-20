@@ -3,12 +3,12 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.25,
-  "group": "iron",
+  "group": "ore_tree",
   "ingredient": {
     "item": "ore_trees_reboot:iron_log"
   },
   "result": {
-    "count": 1,
+    "count": 4,
     "id": "minecraft:iron_ingot"
   }
 }

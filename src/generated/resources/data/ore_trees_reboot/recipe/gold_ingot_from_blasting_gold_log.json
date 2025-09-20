@@ -1,14 +1,14 @@
 {
-  "type": "minecraft:smelting",
+  "type": "minecraft:blasting",
   "category": "misc",
-  "cookingtime": 200,
+  "cookingtime": 100,
   "experience": 0.25,
   "group": "ore_tree",
   "ingredient": {
-    "item": "ore_trees_reboot:diamond_log"
+    "item": "ore_trees_reboot:gold_log"
   },
   "result": {
     "count": 4,
-    "id": "minecraft:diamond"
+    "id": "minecraft:gold_ingot"
   }
 }

@@ -19,6 +19,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(ModItems.Crafting_Base.get());
+        basicItem(ModItems.ORE_TREE_SHARD.get());
         saplingItem(ModBlocks.IRON_SAPLING);
         saplingItem(ModBlocks.GOLD_SAPLING);
         saplingItem(ModBlocks.COPPER_SAPLING);

@@ -19,9 +19,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(ItemTags.LOGS_THAT_BURN)
-                .add(ModBlocks.IRON_LOG.get().asItem());
-
 
     }
 }

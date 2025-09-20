@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_diamond_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ore_trees_reboot:diamond_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ore_trees_reboot:diamond_from_blasting_diamond_log"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_diamond_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ore_trees_reboot:diamond_from_blasting_diamond_log"
+    ]
+  }
+}

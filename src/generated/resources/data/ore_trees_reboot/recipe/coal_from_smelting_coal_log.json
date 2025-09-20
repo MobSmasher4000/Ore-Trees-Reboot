@@ -3,12 +3,12 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.25,
-  "group": "coal",
+  "group": "ore_tree",
   "ingredient": {
     "item": "ore_trees_reboot:coal_log"
   },
   "result": {
-    "count": 1,
+    "count": 4,
     "id": "minecraft:coal"
   }
 }
