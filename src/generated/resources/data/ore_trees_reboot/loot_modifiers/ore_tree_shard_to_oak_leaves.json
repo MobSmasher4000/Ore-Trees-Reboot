@@ -1,0 +1,14 @@
+{
+  "type": "ore_trees_reboot:add_item",
+  "conditions": [
+    {
+      "block": "minecraft:oak_leaves",
+      "condition": "minecraft:block_state_property"
+    },
+    {
+      "chance": 0.1,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "item": "ore_trees_reboot:ore_tree_shard"
+}

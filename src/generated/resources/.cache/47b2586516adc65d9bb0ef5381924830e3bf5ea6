@@ -1,0 +1,3 @@
+// 1.21.1	2025-09-20T17:59:59.8275787	Global Loot Modifiers : ore_trees_reboot
+0775cbee7cb7bd0b13347283e06f1cbb4edf46e7 data/neoforge/loot_modifiers/global_loot_modifiers.json
+43f58ac4e46c9091fd622819709ad4d4937fda54 data/ore_trees_reboot/loot_modifiers/ore_tree_shard_to_oak_leaves.json

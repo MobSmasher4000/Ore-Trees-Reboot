@@ -16,6 +16,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.mob.ore_trees_rebooot.block.ModBlocks;
 import org.mob.ore_trees_rebooot.item.ModItems;
+import org.mob.ore_trees_rebooot.loot.ModLootModifiers;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -34,8 +35,8 @@ public class Ore_trees_reboot {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
         ModCreativeModeTab.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Ore_trees_reborn) to respond directly to events.
