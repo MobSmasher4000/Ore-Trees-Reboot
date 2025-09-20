@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_emerald_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ore_trees_reboot:emerald_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ore_trees_reboot:emerald_from_blasting_emerald_log"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_emerald_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ore_trees_reboot:emerald_from_blasting_emerald_log"
+    ]
+  }
+}

@@ -3,12 +3,12 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.25,
-  "group": "emerald",
+  "group": "ore_tree",
   "ingredient": {
     "item": "ore_trees_reboot:emerald_log"
   },
   "result": {
-    "count": 1,
+    "count": 4,
     "id": "minecraft:emerald"
   }
 }

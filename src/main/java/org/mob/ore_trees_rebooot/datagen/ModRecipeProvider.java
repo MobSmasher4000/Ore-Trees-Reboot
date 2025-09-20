@@ -46,21 +46,36 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         tempCraftingRecipe(recipeOutput, ModBlocks.COAL_SAPLING.get(), Blocks.COAL_BLOCK);
         tempCraftingRecipe(recipeOutput, ModBlocks.EMERALD_SAPLING.get(), Blocks.EMERALD_BLOCK);
 
-        oreLogSmelting(recipeOutput, IRON_LOG_SMELTABLE, Items.IRON_INGOT, "iron");
-        oreLogSmelting(recipeOutput, GOLD_LOG_SMELTABLE, Items.GOLD_INGOT, "gold");
-        oreLogSmelting(recipeOutput, COPPER_LOG_SMELTABLE, Items.COPPER_INGOT, "copper");
-        oreLogSmelting(recipeOutput, LAPIS_LOG_SMELTABLE, Items.LAPIS_LAZULI, "lapis");
-        oreLogSmelting(recipeOutput, DIAMOND_LOG_SMELTABLE, Items.DIAMOND, "diamond");
-        oreLogSmelting(recipeOutput, REDSTONE_LOG_SMELTABLE, Items.REDSTONE, "redstone");
-        oreLogSmelting(recipeOutput, ANCIENT_LOG_SMELTABLE, Items.ANCIENT_DEBRIS, "netherite");
-        oreLogSmelting(recipeOutput, QUARTZ_LOG_SMELTABLE, Items.QUARTZ, "quartz");
-        oreLogSmelting(recipeOutput, COAL_LOG_SMELTABLE, Items.COAL, "coal");
-        oreLogSmelting(recipeOutput, EMERALD_LOG_SMELTABLE, Items.EMERALD, "emerald");
+        oreLogSmelting(recipeOutput, IRON_LOG_SMELTABLE, Items.IRON_INGOT);
+        oreLogSmelting(recipeOutput, GOLD_LOG_SMELTABLE, Items.GOLD_INGOT);
+        oreLogSmelting(recipeOutput, COPPER_LOG_SMELTABLE, Items.COPPER_INGOT);
+        oreLogSmelting(recipeOutput, LAPIS_LOG_SMELTABLE, Items.LAPIS_LAZULI);
+        oreLogSmelting(recipeOutput, DIAMOND_LOG_SMELTABLE, Items.DIAMOND);
+        oreLogSmelting(recipeOutput, REDSTONE_LOG_SMELTABLE, Items.REDSTONE);
+        oreLogSmelting(recipeOutput, ANCIENT_LOG_SMELTABLE, Items.ANCIENT_DEBRIS);
+        oreLogSmelting(recipeOutput, QUARTZ_LOG_SMELTABLE, Items.QUARTZ);
+        oreLogSmelting(recipeOutput, COAL_LOG_SMELTABLE, Items.COAL);
+        oreLogSmelting(recipeOutput, EMERALD_LOG_SMELTABLE, Items.EMERALD);
+
+        oreLogBlasting(recipeOutput, IRON_LOG_SMELTABLE, Items.IRON_INGOT);
+        oreLogBlasting(recipeOutput, GOLD_LOG_SMELTABLE, Items.GOLD_INGOT);
+        oreLogBlasting(recipeOutput, COPPER_LOG_SMELTABLE, Items.COPPER_INGOT);
+        oreLogBlasting(recipeOutput, LAPIS_LOG_SMELTABLE, Items.LAPIS_LAZULI);
+        oreLogBlasting(recipeOutput, DIAMOND_LOG_SMELTABLE, Items.DIAMOND);
+        oreLogBlasting(recipeOutput, REDSTONE_LOG_SMELTABLE, Items.REDSTONE);
+        oreLogBlasting(recipeOutput, ANCIENT_LOG_SMELTABLE, Items.ANCIENT_DEBRIS);
+        oreLogBlasting(recipeOutput, QUARTZ_LOG_SMELTABLE, Items.QUARTZ);
+        oreLogBlasting(recipeOutput, COAL_LOG_SMELTABLE, Items.COAL);
+        oreLogBlasting(recipeOutput, EMERALD_LOG_SMELTABLE, Items.EMERALD);
 
     }
 
-    private static void oreLogSmelting(RecipeOutput recipeOutput, List<ItemLike> IRON_LOG_SMELTABLE, Item output, String group) {
-        oreSmelting(recipeOutput, IRON_LOG_SMELTABLE, RecipeCategory.MISC, output, 0.25f, 200, group);
+    private static void oreLogSmelting(RecipeOutput recipeOutput, List<ItemLike> ORE_LOG_SMELTABLE, Item output) {
+        oreSmelting(recipeOutput, ORE_LOG_SMELTABLE, RecipeCategory.MISC, output, 0.25f, 200, "ore_tree");
+    }
+
+    private static void oreLogBlasting(RecipeOutput recipeOutput, List<ItemLike> ORE_LOG_SMELTABLE, Item output) {
+        oreBlasting(recipeOutput, ORE_LOG_SMELTABLE, RecipeCategory.MISC, output, 0.25f, 100, "ore_tree");
     }
 
     private static void tempCraftingRecipe(RecipeOutput recipeOutput, Block sapling, Block material) {
