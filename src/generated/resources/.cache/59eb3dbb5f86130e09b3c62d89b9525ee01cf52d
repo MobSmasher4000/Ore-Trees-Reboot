@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-19T19:20:47.4400732	Loot Tables
+// 1.21.1	2025-09-21T17:58:06.8824351	Loot Tables
 e9137c12432db2699403ee3ccaf12312538d03df data/ore_trees_reboot/loot_table/blocks/ancient_leaves.json
 e9a8a6d700a81ac98a4faae34c58426a4a7deda1 data/ore_trees_reboot/loot_table/blocks/ancient_log.json
 ebf6140a75ce41dbf51cb74f5af7fead543058db data/ore_trees_reboot/loot_table/blocks/ancient_sapling.json
@@ -23,6 +23,8 @@ d0d429572f525f4a425bc845279a03b7b9832065 data/ore_trees_reboot/loot_table/blocks
 3a1f94d524adf0a92684b1dcb50e5273d035bd6a data/ore_trees_reboot/loot_table/blocks/lapis_leaves.json
 555094105b05086d86d2c35b0f5d549b8ce8e255 data/ore_trees_reboot/loot_table/blocks/lapis_log.json
 1c6162d20f30fd532ad87ab5145f7d44ef104c65 data/ore_trees_reboot/loot_table/blocks/lapis_sapling.json
+7df71d1bb598bc36192909c9cfbe500e20b69b9f data/ore_trees_reboot/loot_table/blocks/ore_tree_crafter.json
+e709c51f27eafb070be5aa5811619d6926a41a48 data/ore_trees_reboot/loot_table/blocks/ore_tree_reconstructor.json
 a473a94671e05ddbd233616f84bdad128332d619 data/ore_trees_reboot/loot_table/blocks/quartz_leaves.json
 060f569e928e7ee6a9307c1ca8489a9da24a27ed data/ore_trees_reboot/loot_table/blocks/quartz_log.json
 bbac99490a8c156cf00bb751e7196d73a9d342f8 data/ore_trees_reboot/loot_table/blocks/quartz_sapling.json
