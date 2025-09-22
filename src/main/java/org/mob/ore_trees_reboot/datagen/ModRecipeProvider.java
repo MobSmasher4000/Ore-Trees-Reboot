@@ -10,9 +10,11 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import org.mob.ore_trees_reboot.Ore_trees_reboot;
 import org.mob.ore_trees_reboot.block.ModBlocks;
+import org.mob.ore_trees_reboot.item.ModItems;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -68,6 +70,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreLogBlasting(recipeOutput, COAL_LOG_SMELTABLE, Items.COAL);
         oreLogBlasting(recipeOutput, EMERALD_LOG_SMELTABLE, Items.EMERALD);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ORE_TREE_RECONSTRUCTOR.get())
+                .pattern("ICL")
+                .pattern("GDR")
+                .pattern("EQW")
+                .define('I',Blocks.IRON_BLOCK)
+                .define('C',Blocks.COPPER_BLOCK)
+                .define('L',Blocks.LAPIS_BLOCK)
+                .define('G',Blocks.GOLD_BLOCK)
+                .define('D',Blocks.DIAMOND_BLOCK)
+                .define('R',Blocks.REDSTONE_BLOCK)
+                .define('E',Blocks.EMERALD_BLOCK)
+                .define('Q',Blocks.QUARTZ_BLOCK)
+                .define('W',Blocks.COAL_BLOCK)
+                .unlockedBy("has_sapling", has(Items.OAK_SAPLING))
+                .save(recipeOutput);
+
     }
 
     private static void oreLogSmelting(RecipeOutput recipeOutput, List<ItemLike> ORE_LOG_SMELTABLE, Item output) {
@@ -80,12 +98,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private static void tempCraftingRecipe(RecipeOutput recipeOutput, Block sapling, Block material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, sapling)
-                .pattern("BBB")
-                .pattern("BSB")
+                .pattern("SSS")
+                .pattern("SCB")
                 .pattern("BBB")
                 .define('B', material)
-                .define('S', ItemTags.SAPLINGS)
-                .unlockedBy("has_sapling", has(Blocks.OAK_SAPLING))
+                .define('S', ModItems.ORE_TREE_SHARD)
+                .define('C', ModItems.Crafting_Base)
+                .unlockedBy("has_crafting_base", has(ModItems.Crafting_Base))
                 .save(recipeOutput);
     }
 

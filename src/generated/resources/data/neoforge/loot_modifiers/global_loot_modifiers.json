@@ -1,6 +1,15 @@
 {
   "entries": [
-    "ore_trees_reboot:ore_tree_shard_to_oak_leaves"
+    "ore_trees_reboot:ore_tree_shard_to_oak_leaves",
+    "ore_trees_reboot:ore_tree_shard_to_acacia_leaves",
+    "ore_trees_reboot:ore_tree_shard_to_azalea_leaves",
+    "ore_trees_reboot:ore_tree_shard_to_birch_leaves",
+    "ore_trees_reboot:ore_tree_shard_to_cherry_leaves",
+    "ore_trees_reboot:ore_tree_shard_to_dark_oak_leaves",
+    "ore_trees_reboot:ore_tree_shard_to_flowering_azalea_leaves",
+    "ore_trees_reboot:ore_tree_shard_to_jungle_leaves",
+    "ore_trees_reboot:ore_tree_shard_to_mangrove_leaves",
+    "ore_trees_reboot:ore_tree_shard_to_spruce_leaves"
   ],
   "replace": false
 }

@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:copper_block"
+    },
+    "D": {
+      "item": "minecraft:diamond_block"
+    },
+    "E": {
+      "item": "minecraft:emerald_block"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    },
+    "L": {
+      "item": "minecraft:lapis_block"
+    },
+    "Q": {
+      "item": "minecraft:quartz_block"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    },
+    "W": {
+      "item": "minecraft:coal_block"
+    }
+  },
+  "pattern": [
+    "ICL",
+    "GDR",
+    "EQW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ore_trees_reboot:ore_tree_reconstructor"
+  }
+}

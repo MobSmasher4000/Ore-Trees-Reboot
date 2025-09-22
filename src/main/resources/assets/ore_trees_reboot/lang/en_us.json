@@ -3,8 +3,8 @@
 
   "item.ore_trees_reboot.crafting_base": "Ore Trees Crafting Base",
   "item.ore_trees_reboot.ore_tree_shard": "Ore Trees Crafting Shard",
+  "tooltip.ore_trees_reboot.ore_tree_shard": "Drops from leaves with about 20% chance",
 
-  "block.ore_trees_reboot.ore_tree_crafter": "Ore Tree Crafter",
   "block.ore_trees_reboot.ore_tree_reconstructor": "Ore Tree Reconstructor",
 
   "block.ore_trees_reboot.iron_sapling": "Iron Sapling",

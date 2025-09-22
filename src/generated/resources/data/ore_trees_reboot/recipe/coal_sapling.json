@@ -5,13 +5,16 @@
     "B": {
       "item": "minecraft:coal_block"
     },
+    "C": {
+      "item": "ore_trees_reboot:crafting_base"
+    },
     "S": {
-      "tag": "minecraft:saplings"
+      "item": "ore_trees_reboot:ore_tree_shard"
     }
   },
   "pattern": [
-    "BBB",
-    "BSB",
+    "SSS",
+    "SCB",
     "BBB"
   ],
   "result": {

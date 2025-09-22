@@ -13,10 +13,6 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Ore_trees_reboot.MOD_ID);
 
-    public static final Supplier<BlockEntityType<OreTreeCrafterBlockEntity>> ORE_TREE_CRAFTER_BE =
-            BLOCK_ENTITIES.register("ore_tree_crafter_be", () -> BlockEntityType.Builder.of(
-                    OreTreeCrafterBlockEntity::new, ModBlocks.ORE_TREE_CRAFTER.get()).build(null));
-
     public static final Supplier<BlockEntityType<OreTreeReconstructorBlockEntity>> ORE_TREE_RECONSTRUCTOR_BE =
             BLOCK_ENTITIES.register("ore_tree_reconstructor_be", () -> BlockEntityType.Builder.of(
                     OreTreeReconstructorBlockEntity::new, ModBlocks.ORE_TREE_RECONSTRUCTOR.get()).build(null));

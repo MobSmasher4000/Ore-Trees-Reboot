@@ -14,7 +14,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.mob.ore_trees_reboot.Ore_trees_reboot;
 import org.mob.ore_trees_reboot.block.custom.ModOreTreeLog;
 import org.mob.ore_trees_reboot.block.custom.ModSaplingBlock;
-import org.mob.ore_trees_reboot.block.custom.OreTreeCrafterBlock;
 import org.mob.ore_trees_reboot.block.custom.OreTreeReconstructorBlock;
 import org.mob.ore_trees_reboot.item.ModItems;
 import org.mob.ore_trees_reboot.worldgen.tree.ModTreeGrowers;
@@ -267,9 +266,6 @@ public class ModBlocks {
                 }
             });
 
-//    Ore Tree Crafter
-    public static final DeferredBlock<Block> ORE_TREE_CRAFTER = registerBlock("ore_tree_crafter",
-        ()-> new OreTreeCrafterBlock(BlockBehaviour.Properties.of()));
 
     //    Ore Tree Reconstructor
     public static final DeferredBlock<Block> ORE_TREE_RECONSTRUCTOR = registerBlock("ore_tree_reconstructor",

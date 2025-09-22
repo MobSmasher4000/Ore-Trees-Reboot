@@ -15,16 +15,6 @@ public class ModRecipes {
     public static final DeferredRegister<RecipeType<?>> TYPES =
             DeferredRegister.create(Registries.RECIPE_TYPE, Ore_trees_reboot.MOD_ID);
 
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<OreTreeCrafterRecipe>> ORE_TREE_CRAFTER_SERIALIZER =
-            SERIALIZERS.register("ore_tree_crafter", OreTreeCrafterRecipe.Serializer::new);
-    public static final DeferredHolder<RecipeType<?>, RecipeType<OreTreeCrafterRecipe>> ORE_TREE_CRAFTER_TYPE =
-            TYPES.register("ore_tree_crafter", () -> new RecipeType<OreTreeCrafterRecipe>() {
-                @Override
-                public String toString() {
-                    return "ore_tree_crafter";
-                }
-            });
-
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<OreTreeReconstructorRecipe>> ORE_TREE_RECONSTRUCTOR_SERIALIZER =
             SERIALIZERS.register("ore_tree_reconstructor", OreTreeReconstructorRecipe.Serializer::new);
     public static final DeferredHolder<RecipeType<?>, RecipeType<OreTreeReconstructorRecipe>> ORE_TREE_RECONSTRUCTOR_TYPE =

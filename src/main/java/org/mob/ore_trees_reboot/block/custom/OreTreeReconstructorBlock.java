@@ -62,7 +62,7 @@ public class OreTreeReconstructorBlock extends BaseEntityBlock {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof OreTreeReconstructorBlockEntity OreTreeReconstructorBlockEntity) {
-                ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(OreTreeReconstructorBlockEntity, Component.literal("Growth Chamber")), pPos);
+                ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(OreTreeReconstructorBlockEntity, Component.translatable("block.ore_trees_reboot.ore_tree_reconstructor")), pPos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }

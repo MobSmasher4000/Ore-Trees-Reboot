@@ -19,7 +19,6 @@ public class ModCreativeModeTab {
         output.accept(ModItems.Crafting_Base.get());
         output.accept(ModItems.ORE_TREE_SHARD.get());
 
-        output.accept(ModBlocks.ORE_TREE_CRAFTER.get());
         output.accept(ModBlocks.ORE_TREE_RECONSTRUCTOR.get());
 
         output.accept(ModBlocks.IRON_LEAVES.get());

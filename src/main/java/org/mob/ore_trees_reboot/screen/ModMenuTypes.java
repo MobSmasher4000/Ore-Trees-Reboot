@@ -9,16 +9,12 @@ import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.mob.ore_trees_reboot.Ore_trees_reboot;
-import org.mob.ore_trees_reboot.screen.custom.OreTreeCrafterMenu;
 import org.mob.ore_trees_reboot.screen.custom.OreTreeReconstructorMenu;
 
 public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(Registries.MENU, Ore_trees_reboot.MOD_ID);
 
-
-    public static final DeferredHolder<MenuType<?>, MenuType<OreTreeCrafterMenu>> ORE_TREE_CRAFTER_MENU =
-            registerMenuType("ore_tree_crafter_menu", OreTreeCrafterMenu::new);
 
     public static final DeferredHolder<MenuType<?>, MenuType<OreTreeReconstructorMenu>> ORE_TREE_RECONSTRUCTOR_MENU =
             registerMenuType("ore_tree_reconstructor_menu", OreTreeReconstructorMenu::new);

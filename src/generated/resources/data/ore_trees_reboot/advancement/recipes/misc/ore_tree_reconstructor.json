@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_crafting_base": {
+    "has_sapling": {
       "conditions": {
         "items": [
           {
-            "items": "ore_trees_reboot:crafting_base"
+            "items": "minecraft:oak_sapling"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "ore_trees_reboot:gold_sapling"
+        "recipe": "ore_trees_reboot:ore_tree_reconstructor"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_crafting_base"
+      "has_sapling"
     ]
   ],
   "rewards": {
     "recipes": [
-      "ore_trees_reboot:gold_sapling"
+      "ore_trees_reboot:ore_tree_reconstructor"
     ]
   }
 }

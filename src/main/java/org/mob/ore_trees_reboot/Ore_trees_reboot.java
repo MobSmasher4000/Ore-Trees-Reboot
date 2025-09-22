@@ -18,7 +18,6 @@ import org.mob.ore_trees_reboot.item.ModItems;
 import org.mob.ore_trees_reboot.loot.ModLootModifiers;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.screen.ModMenuTypes;
-import org.mob.ore_trees_reboot.screen.custom.OreTreeCrafterScreen;
 import org.mob.ore_trees_reboot.screen.custom.OreTreeReconstructorScreen;
 import org.slf4j.Logger;
 
@@ -70,7 +69,6 @@ public class Ore_trees_reboot {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
-            event.register(ModMenuTypes.ORE_TREE_CRAFTER_MENU.get(), OreTreeCrafterScreen::new);
             event.register(ModMenuTypes.ORE_TREE_RECONSTRUCTOR_MENU.get(), OreTreeReconstructorScreen::new);
         }
     }
