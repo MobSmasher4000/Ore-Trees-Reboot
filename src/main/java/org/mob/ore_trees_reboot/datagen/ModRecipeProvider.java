@@ -3,14 +3,12 @@ package org.mob.ore_trees_reboot.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import org.mob.ore_trees_reboot.Ore_trees_reboot;
 import org.mob.ore_trees_reboot.block.ModBlocks;
@@ -37,16 +35,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         List<ItemLike> COAL_LOG_SMELTABLE = List.of(ModBlocks.COAL_LOG);
         List<ItemLike> EMERALD_LOG_SMELTABLE = List.of(ModBlocks.EMERALD_LOG);
 
-        tempCraftingRecipe(recipeOutput, ModBlocks.IRON_SAPLING.get(), Blocks.IRON_BLOCK);
-        tempCraftingRecipe(recipeOutput, ModBlocks.GOLD_SAPLING.get(), Blocks.GOLD_BLOCK);
-        tempCraftingRecipe(recipeOutput, ModBlocks.COPPER_SAPLING.get(), Blocks.COPPER_BLOCK);
-        tempCraftingRecipe(recipeOutput, ModBlocks.LAPIS_SAPLING.get(), Blocks.LAPIS_BLOCK);
-        tempCraftingRecipe(recipeOutput, ModBlocks.DIAMOND_SAPLING.get(), Blocks.DIAMOND_BLOCK);
-        tempCraftingRecipe(recipeOutput, ModBlocks.REDSTONE_SAPLING.get(), Blocks.REDSTONE_BLOCK);
-        tempCraftingRecipe(recipeOutput, ModBlocks.ANCIENT_SAPLING.get(), Blocks.NETHERITE_BLOCK);
-        tempCraftingRecipe(recipeOutput, ModBlocks.QUARTZ_SAPLING.get(), Blocks.QUARTZ_BLOCK);
-        tempCraftingRecipe(recipeOutput, ModBlocks.COAL_SAPLING.get(), Blocks.COAL_BLOCK);
-        tempCraftingRecipe(recipeOutput, ModBlocks.EMERALD_SAPLING.get(), Blocks.EMERALD_BLOCK);
+        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.IRON_SAPLING.get(), Blocks.IRON_BLOCK);
+        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.GOLD_SAPLING.get(), Blocks.GOLD_BLOCK);
+        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.COPPER_SAPLING.get(), Blocks.COPPER_BLOCK);
+        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.LAPIS_SAPLING.get(), Blocks.LAPIS_BLOCK);
+        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.DIAMOND_SAPLING.get(), Blocks.DIAMOND_BLOCK);
+        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.REDSTONE_SAPLING.get(), Blocks.REDSTONE_BLOCK);
+        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.ANCIENT_SAPLING.get(), Blocks.NETHERITE_BLOCK);
+        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.QUARTZ_SAPLING.get(), Blocks.QUARTZ_BLOCK);
+        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.COAL_SAPLING.get(), Blocks.COAL_BLOCK);
+        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.EMERALD_SAPLING.get(), Blocks.EMERALD_BLOCK);
+
+        tempDirtCraftingRecipe(recipeOutput, ModBlocks.IRON_DIRT.get(), Blocks.IRON_BLOCK);
+        tempDirtCraftingRecipe(recipeOutput, ModBlocks.GOLD_DIRT.get(), Blocks.GOLD_BLOCK);
+        tempDirtCraftingRecipe(recipeOutput, ModBlocks.COPPER_DIRT.get(), Blocks.COPPER_BLOCK);
+        tempDirtCraftingRecipe(recipeOutput, ModBlocks.LAPIS_DIRT.get(), Blocks.LAPIS_BLOCK);
+        tempDirtCraftingRecipe(recipeOutput, ModBlocks.DIAMOND_DIRT.get(), Blocks.DIAMOND_BLOCK);
+        tempDirtCraftingRecipe(recipeOutput, ModBlocks.REDSTONE_DIRT.get(), Blocks.REDSTONE_BLOCK);
+        tempDirtCraftingRecipe(recipeOutput, ModBlocks.ANCIENT_DIRT.get(), Blocks.NETHERITE_BLOCK);
+        tempDirtCraftingRecipe(recipeOutput, ModBlocks.COAL_DIRT.get(), Blocks.COAL_BLOCK);
+        tempDirtCraftingRecipe(recipeOutput, ModBlocks.QUARTZ_DIRT.get(), Blocks.QUARTZ_BLOCK);
+        tempDirtCraftingRecipe(recipeOutput, ModBlocks.EMERALD_DIRT.get(), Blocks.EMERALD_BLOCK);
 
         oreLogSmelting(recipeOutput, IRON_LOG_SMELTABLE, Items.IRON_INGOT);
         oreLogSmelting(recipeOutput, GOLD_LOG_SMELTABLE, Items.GOLD_INGOT);
@@ -96,7 +105,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreBlasting(recipeOutput, ORE_LOG_SMELTABLE, RecipeCategory.MISC, output, 0.25f, 100, "ore_tree");
     }
 
-    private static void tempCraftingRecipe(RecipeOutput recipeOutput, Block sapling, Block material) {
+    private static void tempSaplingCraftingRecipe(RecipeOutput recipeOutput, Block sapling, Block material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, sapling)
                 .pattern("SSS")
                 .pattern("SCB")
@@ -105,6 +114,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', ModItems.ORE_TREE_SHARD)
                 .define('C', ModItems.Crafting_Base)
                 .unlockedBy("has_crafting_base", has(ModItems.Crafting_Base))
+                .save(recipeOutput);
+    }
+
+    private static void tempDirtCraftingRecipe(RecipeOutput recipeOutput, Block dirt, Block material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, dirt)
+                .pattern("SSS")
+                .pattern("SBS")
+                .pattern("SSS")
+                .define('B', material)
+                .define('S', ModItems.ORE_TREE_SHARD)
+                .unlockedBy("has_ore_shards", has(ModItems.ORE_TREE_SHARD))
                 .save(recipeOutput);
     }
 

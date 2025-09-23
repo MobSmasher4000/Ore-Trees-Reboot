@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "ore_trees_reboot:block/copper_dirt"
+  }
+}

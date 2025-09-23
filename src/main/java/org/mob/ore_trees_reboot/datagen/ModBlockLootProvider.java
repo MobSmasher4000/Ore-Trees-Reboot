@@ -71,6 +71,17 @@ public class ModBlockLootProvider extends BlockLootSubProvider {
         this.add(ModBlocks.EMERALD_LEAVES.get(), block ->
                 createLeavesDrops(block, ModBlocks.EMERALD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
+        dropSelf(ModBlocks.IRON_DIRT.get());
+        dropSelf(ModBlocks.GOLD_DIRT.get());
+        dropSelf(ModBlocks.COPPER_DIRT.get());
+        dropSelf(ModBlocks.LAPIS_DIRT.get());
+        dropSelf(ModBlocks.DIAMOND_DIRT.get());
+        dropSelf(ModBlocks.REDSTONE_DIRT.get());
+        dropSelf(ModBlocks.ANCIENT_DIRT.get());
+        dropSelf(ModBlocks.COAL_DIRT.get());
+        dropSelf(ModBlocks.QUARTZ_DIRT.get());
+        dropSelf(ModBlocks.EMERALD_DIRT.get());
+
     }
 
     @Override

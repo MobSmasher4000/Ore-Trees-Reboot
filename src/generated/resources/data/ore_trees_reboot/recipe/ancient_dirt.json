@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:netherite_block"
+    },
+    "S": {
+      "item": "ore_trees_reboot:ore_tree_shard"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SBS",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ore_trees_reboot:ancient_dirt"
+  }
+}

@@ -72,10 +72,18 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.EMERALD_SAPLING.get())
         ;
 
-        tag(ModTags.Blocks.IRON_TREE_DIRT)
-                .add(Blocks.IRON_BLOCK)
-                .add(Blocks.IRON_ORE)
-                .add(Blocks.DEEPSLATE_IRON_ORE)
-                .add(Blocks.RAW_IRON_BLOCK);
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.IRON_DIRT.get())
+                .add(ModBlocks.GOLD_DIRT.get())
+                .add(ModBlocks.COPPER_DIRT.get())
+                .add(ModBlocks.LAPIS_DIRT.get())
+                .add(ModBlocks.DIAMOND_DIRT.get())
+                .add(ModBlocks.ANCIENT_DIRT.get())
+                .add(ModBlocks.REDSTONE_DIRT.get())
+                .add(ModBlocks.QUARTZ_DIRT.get())
+                .add(ModBlocks.COAL_DIRT.get())
+                .add(ModBlocks.EMERALD_DIRT.get())
+
+        ;
     }
 }

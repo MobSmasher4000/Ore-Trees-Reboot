@@ -65,6 +65,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         leavesBlock(ModBlocks.COAL_LEAVES);
         leavesBlock(ModBlocks.EMERALD_LEAVES);
 
+        blockWithItem(ModBlocks.IRON_DIRT);
+        blockWithItem(ModBlocks.GOLD_DIRT);
+        blockWithItem(ModBlocks.COPPER_DIRT);
+        blockWithItem(ModBlocks.LAPIS_DIRT);
+        blockWithItem(ModBlocks.DIAMOND_DIRT);
+        blockWithItem(ModBlocks.REDSTONE_DIRT);
+        blockWithItem(ModBlocks.ANCIENT_DIRT);
+        blockWithItem(ModBlocks.COAL_DIRT);
+        blockWithItem(ModBlocks.QUARTZ_DIRT);
+        blockWithItem(ModBlocks.EMERALD_DIRT);
+
     }
 
     private void leavesBlock(DeferredBlock<Block> blockRegistryObject) {

@@ -4,6 +4,16 @@
   "item.ore_trees_reboot.crafting_base": "Ore Trees Crafting Base",
   "item.ore_trees_reboot.ore_tree_shard": "Ore Trees Crafting Shard",
   "tooltip.ore_trees_reboot.ore_tree_shard": "Drops from leaves with about 20% chance",
+  "tooltip.ore_trees_reboot.iron_dirt": "A dirt made with high witchcraft advancements disguised as a block of iron, but still a dirt",
+  "tooltip.ore_trees_reboot.gold_dirt": "A dirt made with high witchcraft advancements disguised as a block of gold, but still a dirt",
+  "tooltip.ore_trees_reboot.copper_dirt": "A dirt made with high witchcraft advancements disguised as a block of copper, but still a dirt",
+  "tooltip.ore_trees_reboot.lapis_dirt": "A dirt made with high witchcraft advancements disguised as a block of lapis, but still a dirt",
+  "tooltip.ore_trees_reboot.redstone_dirt": "A dirt made with high witchcraft advancements disguised as a block of redstone, but still a dirt",
+  "tooltip.ore_trees_reboot.diamond_dirt": "A dirt made with high witchcraft advancements disguised as a block of diamond, but still a dirt",
+  "tooltip.ore_trees_reboot.ancient_dirt": "A dirt made with high witchcraft advancements disguised as a block of netherite, but still a dirt",
+  "tooltip.ore_trees_reboot.coal_dirt": "A dirt made with high witchcraft advancements disguised as a block of coal, but still a dirt",
+  "tooltip.ore_trees_reboot.quartz_dirt": "A dirt made with high witchcraft advancements disguised as a block of quartz, but still a dirt",
+  "tooltip.ore_trees_reboot.emerald_dirt": "A dirt made with high witchcraft advancements disguised as a block of emerald, but still a dirt",
 
   "block.ore_trees_reboot.ore_tree_reconstructor": "Ore Tree Reconstructor",
 
@@ -38,5 +48,17 @@
   "block.ore_trees_reboot.ancient_leaves": "Ancient Leaves",
   "block.ore_trees_reboot.quartz_leaves": "Quartz Leaves",
   "block.ore_trees_reboot.coal_leaves": "Coal Leaves",
-  "block.ore_trees_reboot.emerald_leaves": "Emerald Leaves"
+  "block.ore_trees_reboot.emerald_leaves": "Emerald Leaves",
+
+  "block.ore_trees_reboot.iron_dirt": "Iron dirt",
+  "block.ore_trees_reboot.gold_dirt": "Gold dirt",
+  "block.ore_trees_reboot.copper_dirt": "Copper dirt",
+  "block.ore_trees_reboot.lapis_dirt": "Lapis dirt",
+  "block.ore_trees_reboot.diamond_dirt": "Diamond dirt",
+  "block.ore_trees_reboot.redstone_dirt": "Redstone dirt",
+  "block.ore_trees_reboot.ancient_dirt": "Ancient dirt",
+  "block.ore_trees_reboot.quartz_dirt": "Quartz dirt",
+  "block.ore_trees_reboot.coal_dirt": "Coal dirt",
+  "block.ore_trees_reboot.emerald_dirt": "Emerald dirt"
+
 }

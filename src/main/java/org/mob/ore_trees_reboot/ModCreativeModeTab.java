@@ -53,6 +53,17 @@ public class ModCreativeModeTab {
         output.accept(ModBlocks.ANCIENT_LOG.get());
         output.accept(ModBlocks.COAL_LOG.get());
         output.accept(ModBlocks.EMERALD_LOG.get());
+
+        output.accept(ModBlocks.IRON_DIRT.get());
+        output.accept(ModBlocks.GOLD_DIRT.get());
+        output.accept(ModBlocks.COPPER_DIRT.get());
+        output.accept(ModBlocks.LAPIS_DIRT.get());
+        output.accept(ModBlocks.DIAMOND_DIRT.get());
+        output.accept(ModBlocks.ANCIENT_DIRT.get());
+        output.accept(ModBlocks.COAL_DIRT.get());
+        output.accept(ModBlocks.REDSTONE_DIRT.get());
+        output.accept(ModBlocks.QUARTZ_DIRT.get());
+        output.accept(ModBlocks.EMERALD_DIRT.get());
     }).build());
 
     public static void register(IEventBus eventBus){
