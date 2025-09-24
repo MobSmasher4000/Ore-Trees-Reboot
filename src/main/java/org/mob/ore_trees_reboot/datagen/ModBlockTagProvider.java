@@ -85,5 +85,18 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.EMERALD_DIRT.get())
 
         ;
+
+        tag(ModTags.Blocks.ORE_LOG)
+                .add(ModBlocks.IRON_LOG.get())
+                .add(ModBlocks.GOLD_LOG.get())
+                .add(ModBlocks.COPPER_LOG.get())
+                .add(ModBlocks.LAPIS_LOG.get())
+                .add(ModBlocks.DIAMOND_LOG.get())
+                .add(ModBlocks.REDSTONE_LOG.get())
+                .add(ModBlocks.ANCIENT_LOG.get())
+                .add(ModBlocks.QUARTZ_LOG.get())
+                .add(ModBlocks.COAL_LOG.get())
+                .add(ModBlocks.EMERALD_LOG.get())
+        ;
     }
 }

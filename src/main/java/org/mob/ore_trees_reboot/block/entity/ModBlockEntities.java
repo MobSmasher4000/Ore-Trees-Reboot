@@ -17,6 +17,10 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("ore_tree_reconstructor_be", () -> BlockEntityType.Builder.of(
                     OreTreeReconstructorBlockEntity::new, ModBlocks.ORE_TREE_RECONSTRUCTOR.get()).build(null));
 
+    public static final Supplier<BlockEntityType<ResourceProcessorBlockEntity>> RESOURCE_PROCESSOR_BE =
+            BLOCK_ENTITIES.register("resource_processor_be", () -> BlockEntityType.Builder.of(
+                    ResourceProcessorBlockEntity::new, ModBlocks.RESOURCE_PROCESSOR.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

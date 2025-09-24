@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-23T18:22:08.5215634	Loot Tables
+// 1.21.1	2025-09-24T12:11:17.8729356	Loot Tables
 ec253c77c5904cb9298348fc2923d050017571a8 data/ore_trees_reboot/loot_table/blocks/ancient_dirt.json
 e9137c12432db2699403ee3ccaf12312538d03df data/ore_trees_reboot/loot_table/blocks/ancient_leaves.json
 e9a8a6d700a81ac98a4faae34c58426a4a7deda1 data/ore_trees_reboot/loot_table/blocks/ancient_log.json
@@ -40,3 +40,4 @@ bbac99490a8c156cf00bb751e7196d73a9d342f8 data/ore_trees_reboot/loot_table/blocks
 dfe379e298655e8bc00cb90c4e386cdc1c64c7e9 data/ore_trees_reboot/loot_table/blocks/redstone_leaves.json
 7266f239687176c8e78a59755e0baaaa67ee357a data/ore_trees_reboot/loot_table/blocks/redstone_log.json
 d001bf23c3627bad6f70f66fd514cab7466a62d9 data/ore_trees_reboot/loot_table/blocks/redstone_sapling.json
+505d4d84c2500fd8c23773ca3a8d419a1947b8a9 data/ore_trees_reboot/loot_table/blocks/resource_processor.json

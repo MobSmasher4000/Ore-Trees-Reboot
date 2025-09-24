@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-23T18:37:22.8643498	Block States: ore_trees_reboot
+// 1.21.1	2025-09-24T17:46:46.5117949	Block States: ore_trees_reboot
 c2367a8b0f1a4063e9800d9098be0a5460fcb129 assets/ore_trees_reboot/blockstates/ancient_dirt.json
 08d510f7e4b5a6ee2fbbe1382d2e0f8bbfbc7137 assets/ore_trees_reboot/blockstates/ancient_leaves.json
 8a69371683def8bb0632776424c8fe950e2a649b assets/ore_trees_reboot/blockstates/ancient_log.json
@@ -122,3 +122,4 @@ e291462effcbad699231e99c99d9f8974523e190 assets/ore_trees_reboot/models/item/iro
 0f09915077b66e79d5f7a491b44a49c9bf87c79f assets/ore_trees_reboot/models/item/redstone_dirt.json
 293e7d4e9b1fcb5b5893e37349e2a22ba5d4b5cd assets/ore_trees_reboot/models/item/redstone_leaves.json
 4612357e36b3773399f2f6830b61f02856b15cd0 assets/ore_trees_reboot/models/item/redstone_log.json
+a4370f4caffa8655e96d85c316d268220e94ef7a assets/ore_trees_reboot/models/item/resource_processor.json

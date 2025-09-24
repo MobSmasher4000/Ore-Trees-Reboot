@@ -59,6 +59,7 @@
   "block.ore_trees_reboot.ancient_dirt": "Ancient dirt",
   "block.ore_trees_reboot.quartz_dirt": "Quartz dirt",
   "block.ore_trees_reboot.coal_dirt": "Coal dirt",
-  "block.ore_trees_reboot.emerald_dirt": "Emerald dirt"
+  "block.ore_trees_reboot.emerald_dirt": "Emerald dirt",
+  "block.ore_trees_reboot.resource_processor": "Resource Processor"
 
 }

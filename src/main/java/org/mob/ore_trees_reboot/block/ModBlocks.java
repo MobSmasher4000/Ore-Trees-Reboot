@@ -18,14 +18,12 @@ import org.mob.ore_trees_reboot.Ore_trees_reboot;
 import org.mob.ore_trees_reboot.block.custom.ModOreTreeLog;
 import org.mob.ore_trees_reboot.block.custom.ModSaplingBlock;
 import org.mob.ore_trees_reboot.block.custom.OreTreeReconstructorBlock;
+import org.mob.ore_trees_reboot.block.custom.ResourceProcessorBlock;
 import org.mob.ore_trees_reboot.item.ModItems;
-import org.mob.ore_trees_reboot.util.ModTags;
 import org.mob.ore_trees_reboot.worldgen.tree.ModTreeGrowers;
 
 import java.util.List;
 import java.util.function.Supplier;
-
-import static org.mob.ore_trees_reboot.util.ModTags.Blocks.*;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Ore_trees_reboot.MOD_ID);
@@ -277,6 +275,10 @@ public class ModBlocks {
     //    Ore Tree Reconstructor
     public static final DeferredBlock<Block> ORE_TREE_RECONSTRUCTOR = registerBlock("ore_tree_reconstructor",
             ()-> new OreTreeReconstructorBlock(BlockBehaviour.Properties.of()));
+
+//    Resource Processor
+    public static final DeferredBlock<Block> RESOURCE_PROCESSOR = registerBlock("resource_processor",
+            () -> new ResourceProcessorBlock(BlockBehaviour.Properties.of()));
 
 //    Ore Tree Dirts
     public static final DeferredBlock<Block> IRON_DIRT = registerBlock("iron_dirt",

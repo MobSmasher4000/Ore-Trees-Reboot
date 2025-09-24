@@ -25,6 +25,16 @@ public class ModRecipes {
                 }
             });
 
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<ResourceProcessorRecipe>> RESOURCE_PROCESSOR_SERIALIZER =
+            SERIALIZERS.register("resource_processor", ResourceProcessorRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeType<?>, RecipeType<ResourceProcessorRecipe>> RESOURCE_PROCESSOR_TYPE =
+            TYPES.register("resource_processor", () -> new RecipeType<ResourceProcessorRecipe>() {
+                @Override
+                public String toString() {
+                    return "resource_processor";
+                }
+            });
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
         TYPES.register(eventBus);

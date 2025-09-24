@@ -19,6 +19,7 @@ import org.mob.ore_trees_reboot.loot.ModLootModifiers;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.screen.ModMenuTypes;
 import org.mob.ore_trees_reboot.screen.custom.OreTreeReconstructorScreen;
+import org.mob.ore_trees_reboot.screen.custom.ResourceProcessorScreen;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -70,6 +71,7 @@ public class Ore_trees_reboot {
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.ORE_TREE_RECONSTRUCTOR_MENU.get(), OreTreeReconstructorScreen::new);
+            event.register(ModMenuTypes.RESOURCE_PROCESSOR_MENU.get(), ResourceProcessorScreen::new);
         }
     }
 

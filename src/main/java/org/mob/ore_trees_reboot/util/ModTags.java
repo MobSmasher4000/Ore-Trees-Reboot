@@ -10,16 +10,6 @@ import static org.mob.ore_trees_reboot.Ore_trees_reboot.resourceLocation;
 
 public class ModTags {
     public static class Blocks{
-        public static final TagKey<Block> IRON_TREE_DIRT = createTag("iron_tree_dirt");
-        public static final TagKey<Block> GOLD_TREE_DIRT = createTag("gold_tree_dirt");
-        public static final TagKey<Block> COPPER_TREE_DIRT = createTag("copper_tree_dirt");
-        public static final TagKey<Block> LAPIS_TREE_DIRT = createTag("lapis_tree_dirt");
-        public static final TagKey<Block> DIAMOND_TREE_DIRT = createTag("diamond_tree_dirt");
-        public static final TagKey<Block> REDSTONE_TREE_DIRT = createTag("redstone_tree_dirt");
-        public static final TagKey<Block> QUARTZ_TREE_DIRT = createTag("quartz_tree_dirt");
-        public static final TagKey<Block> ANCIENT_TREE_DIRT = createTag("ancient_tree_dirt");
-        public static final TagKey<Block> COAL_TREE_DIRT = createTag("coal_tree_dirt");
-        public static final TagKey<Block> EMERALD_TREE_DIRT = createTag("emerald_tree_dirt");
 
         public static final TagKey<Block> ORE_LOG = createTag("ore_log");
         public static final TagKey<Block> ORE_LEAVES = createTag("ore_leaves");

@@ -20,6 +20,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.ORE_TREE_RECONSTRUCTOR);
+        blockItem(ModBlocks.RESOURCE_PROCESSOR);
 
         logBlock((RotatedPillarBlock) ModBlocks.IRON_LOG.get());
         logBlock((RotatedPillarBlock) ModBlocks.GOLD_LOG.get());
