@@ -52,7 +52,7 @@ public class ResourceProcessorRecipeGenerator {
     }
 
     public static void main(String[] args) {
-        File folder = new File("src/generated/resources/data/ore_trees_reboot/recipe");
+        File folder = new File("src/main/resources/data/ore_trees_reboot/recipe");
 
         generateRecipe("ore_trees_reboot:iron_log", "minecraft:iron_ingot", 4,
                 "iron_ingot_from_iron_log", folder);

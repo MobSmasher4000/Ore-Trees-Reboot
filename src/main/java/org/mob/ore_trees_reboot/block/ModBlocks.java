@@ -274,11 +274,23 @@ public class ModBlocks {
 
     //    Ore Tree Reconstructor
     public static final DeferredBlock<Block> ORE_TREE_RECONSTRUCTOR = registerBlock("ore_tree_reconstructor",
-            ()-> new OreTreeReconstructorBlock(BlockBehaviour.Properties.of()));
+            ()-> new OreTreeReconstructorBlock(BlockBehaviour.Properties.of()){
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.ore_trees_reboot.ore_tree_constructor"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
 
 //    Resource Processor
     public static final DeferredBlock<Block> RESOURCE_PROCESSOR = registerBlock("resource_processor",
-            () -> new ResourceProcessorBlock(BlockBehaviour.Properties.of()));
+            () -> new ResourceProcessorBlock(BlockBehaviour.Properties.of()){
+                @Override
+                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.ore_trees_reboot.resource_processor"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
 
 //    Ore Tree Dirts
     public static final DeferredBlock<Block> IRON_DIRT = registerBlock("iron_dirt",

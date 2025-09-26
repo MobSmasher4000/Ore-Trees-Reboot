@@ -28,7 +28,7 @@ public class Ore_trees_reboot {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "ore_trees_reboot";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.

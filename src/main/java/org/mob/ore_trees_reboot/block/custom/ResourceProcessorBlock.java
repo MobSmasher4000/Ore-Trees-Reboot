@@ -81,4 +81,6 @@ public class ResourceProcessorBlock extends BaseEntityBlock {
         return createTickerHelper(blockEntityType, ModBlockEntities.RESOURCE_PROCESSOR_BE.get(),
                 (level1, blockPos, blockState, blockEntity) -> blockEntity.tick(level1, blockPos, blockState));
     }
+
+
 }

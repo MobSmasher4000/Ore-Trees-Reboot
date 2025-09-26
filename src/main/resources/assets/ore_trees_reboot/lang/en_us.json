@@ -60,6 +60,8 @@
   "block.ore_trees_reboot.quartz_dirt": "Quartz dirt",
   "block.ore_trees_reboot.coal_dirt": "Coal dirt",
   "block.ore_trees_reboot.emerald_dirt": "Emerald dirt",
-  "block.ore_trees_reboot.resource_processor": "Resource Processor"
+  "block.ore_trees_reboot.resource_processor": "Resource Processor",
+  "tooltip.ore_trees_reboot.ore_tree_constructor": "default speed 5 sec",
+  "tooltip.ore_trees_reboot.resource_processor": "default speed 5 sec"
 
 }

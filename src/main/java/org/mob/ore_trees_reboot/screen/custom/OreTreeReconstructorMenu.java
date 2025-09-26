@@ -7,6 +7,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import org.mob.ore_trees_reboot.block.ModBlocks;
 import org.mob.ore_trees_reboot.block.entity.OreTreeReconstructorBlockEntity;
@@ -31,9 +32,28 @@ public class OreTreeReconstructorMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 54, 34));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 104, 34));
+        this.addSlot(new OutputSlot(blockEntity.itemHandler, 1, 104, 34));
 
         addDataSlots(data);
+    }
+
+    public class OutputSlot extends SlotItemHandler {
+
+        public OutputSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
+            super(itemHandler, index, xPosition, yPosition);
+        }
+
+        // Prevents the player from putting items in
+        @Override
+        public boolean mayPlace(ItemStack stack) {
+            return false;
+        }
+
+        // Optional: allow taking items
+        @Override
+        public boolean mayPickup(Player player) {
+            return true;
+        }
     }
 
     public boolean isCrafting() {

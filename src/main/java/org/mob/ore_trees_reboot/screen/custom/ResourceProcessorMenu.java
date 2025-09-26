@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import org.mob.ore_trees_reboot.block.ModBlocks;
 import org.mob.ore_trees_reboot.block.entity.ResourceProcessorBlockEntity;
+import org.mob.ore_trees_reboot.inventory.slot.OutputSlot;
 import org.mob.ore_trees_reboot.screen.ModMenuTypes;
 
 public class ResourceProcessorMenu extends AbstractContainerMenu {
@@ -36,17 +37,17 @@ public class ResourceProcessorMenu extends AbstractContainerMenu {
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 64, 68));
 
 //        output slots
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 3, 113, 32));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 4, 131, 32));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 5, 149, 32));
+        this.addSlot(new OutputSlot(blockEntity.itemHandler, 3, 113, 32));
+        this.addSlot(new OutputSlot(blockEntity.itemHandler, 4, 131, 32));
+        this.addSlot(new OutputSlot(blockEntity.itemHandler, 5, 149, 32));
 
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 6, 113, 50));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 7, 131, 50));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 8, 149, 50));
+        this.addSlot(new OutputSlot(blockEntity.itemHandler, 6, 113, 50));
+        this.addSlot(new OutputSlot(blockEntity.itemHandler, 7, 131, 50));
+        this.addSlot(new OutputSlot(blockEntity.itemHandler, 8, 149, 50));
 
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 9, 113, 68));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 10, 131, 68));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 11, 149, 68));
+        this.addSlot(new OutputSlot(blockEntity.itemHandler, 9, 113, 68));
+        this.addSlot(new OutputSlot(blockEntity.itemHandler, 10, 131, 68));
+        this.addSlot(new OutputSlot(blockEntity.itemHandler, 11, 149, 68));
 
         addDataSlots(data);
     }
@@ -80,6 +81,7 @@ public class ResourceProcessorMenu extends AbstractContainerMenu {
 
     // THIS YOU HAVE TO DEFINE!
     private static final int TE_INVENTORY_SLOT_COUNT = 12;  // must be the number of slots you have!
+
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);

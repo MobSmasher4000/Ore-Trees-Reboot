@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-24T20:06:23.5438958	Recipes
+// 1.21.1	2025-09-24T21:49:13.6866823	Recipes
 708cf016c1070c0d4d06e1df3d89cf87f937c9ed data/ore_trees_reboot/advancement/recipes/misc/ancient_dirt.json
 d8ebc348097883d45136d3e1e720c553abc689c0 data/ore_trees_reboot/advancement/recipes/misc/ancient_sapling.json
 a88fc9a6cd084c31a4865f0fdf2a74cd61f62272 data/ore_trees_reboot/advancement/recipes/misc/coal_dirt.json
@@ -20,6 +20,7 @@ c8ea30ea2ab41bd4d3cf71e0af6f4b32eea4c825 data/ore_trees_reboot/advancement/recip
 4ab246c1775cfb68debcad9a2509be33f963bba7 data/ore_trees_reboot/advancement/recipes/misc/quartz_sapling.json
 7c1bdfdd54fefff36aadc9c3c8d70015acc24eba data/ore_trees_reboot/advancement/recipes/misc/redstone_dirt.json
 038522fc1121c6caefa2fd76db64bd0eb2619247 data/ore_trees_reboot/advancement/recipes/misc/redstone_sapling.json
+0eb44df17de3f516742b1c349e9f3ecc62e437d2 data/ore_trees_reboot/advancement/recipes/misc/resource_processor.json
 6cb5a93847d8af17f6fa98322e03c0682782e031 data/ore_trees_reboot/recipe/ancient_dirt.json
 e3c1701cd3232719eb5a1853c8589f12a3a7d3c5 data/ore_trees_reboot/recipe/ancient_sapling.json
 86428ec6440c6c7bdcf8319338d85a3e2052f401 data/ore_trees_reboot/recipe/coal_dirt.json
@@ -41,3 +42,4 @@ e497f970e2433b260eb8e558c8e06e0406fbe8a0 data/ore_trees_reboot/recipe/quartz_dir
 7afe8ef6c03187fec8477a841bfdd797de7a5e81 data/ore_trees_reboot/recipe/quartz_sapling.json
 1edaaf51e15a4261a883781daaeae96141764beb data/ore_trees_reboot/recipe/redstone_dirt.json
 5800cbfd8f2431a278d4901a5a92629ff828297b data/ore_trees_reboot/recipe/redstone_sapling.json
+08b0d9f5c62005c4dac5fd3cd6684449e2d32214 data/ore_trees_reboot/recipe/resource_processor.json

@@ -64,13 +64,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_sapling", has(Items.OAK_SAPLING))
                 .save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RESOURCE_PROCESSOR)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RESOURCE_PROCESSOR.get())
                 .pattern("SSS")
                 .pattern("SBO")
                 .pattern("OOO")
                 .define('S', ModItems.ORE_TREE_SHARD)
                 .define('B', ModItems.Crafting_Base)
-                .define('O', Blocks.OAK_LOG);
+                .define('O', Blocks.OAK_LOG)
+                .unlockedBy("has_base", has(ModItems.Crafting_Base.get()))
+                .save(recipeOutput);
 
     }
 

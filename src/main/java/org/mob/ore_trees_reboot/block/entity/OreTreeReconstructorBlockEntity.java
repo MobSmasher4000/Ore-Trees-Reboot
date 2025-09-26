@@ -44,7 +44,7 @@ public class OreTreeReconstructorBlockEntity extends BlockEntity implements Menu
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 72;
+    private int maxProgress = 100;
 
     public OreTreeReconstructorBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.ORE_TREE_RECONSTRUCTOR_BE.get(), pos, blockState);
