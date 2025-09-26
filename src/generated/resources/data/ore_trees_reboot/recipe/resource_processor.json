@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "ore_trees_reboot:crafting_base"
+    },
+    "O": {
+      "item": "minecraft:oak_log"
+    },
+    "S": {
+      "item": "ore_trees_reboot:ore_tree_shard"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SBO",
+    "OOO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ore_trees_reboot:resource_processor"
+  }
+}
