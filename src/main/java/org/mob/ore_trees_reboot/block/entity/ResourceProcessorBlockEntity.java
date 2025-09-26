@@ -1,6 +1,7 @@
 package org.mob.ore_trees_reboot.block.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -19,6 +20,10 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
@@ -31,6 +36,7 @@ import java.util.stream.IntStream;
 
 public class ResourceProcessorBlockEntity extends BlockEntity implements MenuProvider {
     // 3 input slots + 9 output slots = 12 total
+    // gui handler
     public final ItemStackHandler itemHandler = new ItemStackHandler(12) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -40,6 +46,21 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
             }
         }
     };
+
+    // --- Automation handler for mods ---
+    private final ItemStackHandler automationHandler = new ItemStackHandler(12) {
+        @Override
+        public boolean isItemValid(int slot, ItemStack stack) {
+            return slot >= 0 && slot <= 2; // input slots only
+        }
+
+        @Override
+        public ItemStack extractItem(int slot, int amount, boolean simulate) {
+            if (slot >= 3 && slot <= 11) return super.extractItem(slot, amount, simulate);
+            return ItemStack.EMPTY;
+        }
+    };
+
 
     private static final int[] INPUT_SLOTS = {0, 1, 2}; // sequential input slots
     private static final int[] OUTPUT_SLOT = IntStream.rangeClosed(3, 11).toArray(); // output slots 3–11
@@ -215,5 +236,14 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
+    public @Nullable IItemHandler getItemHandler(@Nullable Direction side) {
+        return itemHandler;
+    }
 
+    @SubscribeEvent
+    private void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.RESOURCE_PROCESSOR_BE.get(),
+                (be,side) -> be.getItemHandler(side));
+    }
 }

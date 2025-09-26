@@ -9,11 +9,15 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.items.IItemHandler;
 import org.mob.ore_trees_reboot.block.ModBlocks;
 import org.mob.ore_trees_reboot.block.entity.ModBlockEntities;
+import org.mob.ore_trees_reboot.block.entity.ResourceProcessorBlockEntity;
 import org.mob.ore_trees_reboot.item.ModItems;
 import org.mob.ore_trees_reboot.loot.ModLootModifiers;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
@@ -78,4 +82,5 @@ public class Ore_trees_reboot {
     public static ResourceLocation resourceLocation(String name){
         return ResourceLocation.fromNamespaceAndPath(MOD_ID,name);
     }
+
 }

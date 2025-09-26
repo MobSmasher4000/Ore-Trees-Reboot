@@ -6,7 +6,7 @@
       "item": "ore_trees_reboot:crafting_base"
     },
     "O": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "S": {
       "item": "ore_trees_reboot:ore_tree_shard"

@@ -3,9 +3,6 @@ package org.mob.ore_trees_reboot.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.nbt.Tag;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -13,7 +10,6 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import org.mob.ore_trees_reboot.block.ModBlocks;
 import org.mob.ore_trees_reboot.item.ModItems;
-import org.mob.ore_trees_reboot.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -70,7 +66,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("OOO")
                 .define('S', ModItems.ORE_TREE_SHARD)
                 .define('B', ModItems.Crafting_Base)
-                .define('O', Blocks.OAK_LOG)
+                .define('O', Tags.Items.STRIPPED_LOGS)
                 .unlockedBy("has_base", has(ModItems.Crafting_Base.get()))
                 .save(recipeOutput);
 
