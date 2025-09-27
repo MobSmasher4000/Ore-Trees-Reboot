@@ -20,12 +20,11 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
+import org.mob.ore_trees_reboot.inventory.SlotFilteredItemHandler;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.recipe.ResourceProcessorRecipe;
 import org.mob.ore_trees_reboot.recipe.ResourceProcessorRecipeInput;
@@ -47,19 +46,31 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         }
     };
 
-    // --- Automation handler for mods ---
-    private final ItemStackHandler automationHandler = new ItemStackHandler(12) {
-        @Override
-        public boolean isItemValid(int slot, ItemStack stack) {
-            return slot >= 0 && slot <= 2; // input slots only
-        }
+    // Unified automation handler: insert only into 0–2, extract only from 3–11
+    private final IItemHandler ioHandler =
+            new SlotFilteredItemHandler(itemHandler,
+                    java.util.List.of(0, 1, 2),    // input slots
+                    java.util.List.of(3, 4, 5, 6, 7, 8, 9, 10, 11)); // output slots
+
+
+    // --- Energy handler ---
+    private final EnergyStorage energyStorage = new EnergyStorage(100_000, 10_000, 0) {
 
         @Override
-        public ItemStack extractItem(int slot, int amount, boolean simulate) {
-            if (slot >= 3 && slot <= 11) return super.extractItem(slot, amount, simulate);
-            return ItemStack.EMPTY;
+        public int extractEnergy(int maxExtract, boolean simulate) {
+            return 0; // disable extraction
         }
+
     };
+
+    // Helper getters (like normal variables)
+    public int getEnergy() {
+        return energyStorage.getEnergyStored();
+    }
+
+    public int getMaxEnergy() {
+        return energyStorage.getMaxEnergyStored();
+    }
 
 
     private static final int[] INPUT_SLOTS = {0, 1, 2}; // sequential input slots
@@ -78,6 +89,8 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
                 return switch (i) {
                     case 0 -> ResourceProcessorBlockEntity.this.progress;
                     case 1 -> ResourceProcessorBlockEntity.this.maxProgress;
+                    case 2 -> ResourceProcessorBlockEntity.this.getEnergy();
+                    case 3 -> ResourceProcessorBlockEntity.this.getMaxEnergy();
                     default -> 0;
                 };
             }
@@ -87,12 +100,13 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
                 switch (i) {
                     case 0 -> ResourceProcessorBlockEntity.this.progress = value;
                     case 1 -> ResourceProcessorBlockEntity.this.maxProgress = value;
+                    case 2 -> ResourceProcessorBlockEntity.this.energyStorage.receiveEnergy(value - energyStorage.getEnergyStored(), false);
                 }
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 4;
             }
         };
     }
@@ -121,6 +135,7 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
         pTag.putInt("resource_processor.progress", progress);
         pTag.putInt("resource_processor.max_progress", maxProgress);
+        pTag.put("energy", energyStorage.serializeNBT(pRegistries));
         super.saveAdditional(pTag, pRegistries);
     }
 
@@ -130,38 +145,54 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
         progress = pTag.getInt("resource_processor.progress");
         maxProgress = pTag.getInt("resource_processor.max_progress");
+        energyStorage.deserializeNBT(pRegistries, pTag.get("energy"));
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
+        if (level.isClientSide) return;
+
         ItemStack activeStack = itemHandler.getStackInSlot(activeInputSlot);
 
         // If current active slot is empty, find next input slot
-        if (activeStack.isEmpty()) {
-            boolean foundInput = false;
-            for (int slot : INPUT_SLOTS) {
-                if (!itemHandler.getStackInSlot(slot).isEmpty()) {
-                    activeInputSlot = slot;
-                    foundInput = true;
-                    break;
-                }
+        boolean foundInput = false;
+        for (int slot : INPUT_SLOTS) {
+            if (!itemHandler.getStackInSlot(slot).isEmpty()) {
+                activeInputSlot = slot;
+                foundInput = true;
+                break;
             }
-            if (!foundInput) {
-                resetProgress();
-                return; // no input, stop processing
-            }
-            activeStack = itemHandler.getStackInSlot(activeInputSlot);
+        }
+        if (!foundInput) {
+            resetProgress();
+            return; // no input, stop processing
         }
 
-        // Process the active input slot if it has a valid recipe
-        if (hasRecipe(activeInputSlot)) {
-            increaseCraftingProgress();
-            setChanged(level, blockPos, blockState);
+        activeStack = itemHandler.getStackInSlot(activeInputSlot);
 
-            if (hasCraftingFinished()) {
-                craftItem(activeInputSlot);
-                resetProgress();
-            }
-        } else {
+        // Check if the active slot has a valid recipe
+        if (!hasRecipe(activeInputSlot)) {
+            resetProgress();
+            return;
+        }
+
+        // Check if enough energy is available
+        int energy = this.energyStorage.getEnergyStored();
+        int energyPerTick = 200;
+        if (energy < energyPerTick) {
+            resetProgress();
+            return;
+        }
+
+        // Consume energy for this tick
+        this.energyStorage.extractEnergy(energyPerTick, false);
+
+        // Increase crafting progress
+        increaseCraftingProgress();
+        setChanged(level, blockPos, blockState);
+
+        // Check if crafting finished
+        if (hasCraftingFinished()) {
+            craftItem(activeInputSlot);
             resetProgress();
         }
     }
@@ -237,13 +268,11 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
     }
 
     public @Nullable IItemHandler getItemHandler(@Nullable Direction side) {
-        return itemHandler;
+        return ioHandler;
     }
 
-    @SubscribeEvent
-    private void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
-                ModBlockEntities.RESOURCE_PROCESSOR_BE.get(),
-                (be,side) -> be.getItemHandler(side));
+    public @Nullable EnergyStorage getEnergyStorage(@Nullable Direction side) {
+        return energyStorage; // same for all sides
     }
+
 }

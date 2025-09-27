@@ -8,12 +8,17 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import org.mob.ore_trees_reboot.Ore_trees_reboot;
+import org.mob.ore_trees_reboot.inventory.EnergyBarWidget;
+
+import java.util.List;
+
+import static org.mob.ore_trees_reboot.Ore_trees_reboot.resourceLocation;
 
 public class ResourceProcessorScreen extends AbstractContainerScreen<ResourceProcessorMenu> {
     private static final ResourceLocation GUI_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(Ore_trees_reboot.MOD_ID,"textures/gui/resource_processor/resource_processor_gui.png");
+            resourceLocation("textures/gui/resource_processor/resource_processor_gui.png");
     private static final ResourceLocation ARROW_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(Ore_trees_reboot.MOD_ID,"textures/gui/arrow_progress.png");
+            resourceLocation("textures/gui/arrow_progress.png");
 
     public ResourceProcessorScreen(ResourceProcessorMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -29,6 +34,8 @@ public class ResourceProcessorScreen extends AbstractContainerScreen<ResourcePro
         int y = ((this.height - imageHeight) / 2);
 
         guiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight + 28);
+
+        this.addRenderableWidget(new EnergyBarWidget(x + 7, y + 17, this.menu::getEnergyStored, this.menu::getMaxEnergyStored));
 
         renderProgressArrow(guiGraphics, x, y);
     }
@@ -50,4 +57,5 @@ public class ResourceProcessorScreen extends AbstractContainerScreen<ResourcePro
         guiGraphics.drawString(this.font, this.playerInventoryTitle, 8, this.imageHeight - 65, 4210752, false);
         guiGraphics.drawString(this.font, this.title, 8, 6, 4210752, false);
     }
+
 }

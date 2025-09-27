@@ -19,7 +19,7 @@ public class ResourceProcessorMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public ResourceProcessorMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
     }
 
     public ResourceProcessorMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -133,5 +133,13 @@ public class ResourceProcessorMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 170));
         }
+    }
+
+    public int getEnergyStored() {
+        return data.get(2);
+    }
+
+    public int getMaxEnergyStored() {
+        return data.get(3);
     }
 }

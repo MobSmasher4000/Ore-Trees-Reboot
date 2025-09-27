@@ -39,6 +39,7 @@ public class Ore_trees_reboot {
     public Ore_trees_reboot(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::onRegisterCapabilities);
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
@@ -81,6 +82,24 @@ public class Ore_trees_reboot {
 
     public static ResourceLocation resourceLocation(String name){
         return ResourceLocation.fromNamespaceAndPath(MOD_ID,name);
+    }
+
+    private void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
+
+        // Resource processor block entity
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.RESOURCE_PROCESSOR_BE.get(),
+                (be,side) -> be.getItemHandler(side));
+
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK,
+                ModBlockEntities.RESOURCE_PROCESSOR_BE.get(),
+                (be, side) -> be.getEnergyStorage(side));
+
+//        Ore tree reconstructor
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.ORE_TREE_RECONSTRUCTOR_BE.get(),
+                (be, side)-> be.getItemHandler(side));
+
     }
 
 }

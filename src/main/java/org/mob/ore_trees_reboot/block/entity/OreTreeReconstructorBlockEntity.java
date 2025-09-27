@@ -1,6 +1,7 @@
 package org.mob.ore_trees_reboot.block.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -19,8 +20,10 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
+import org.mob.ore_trees_reboot.inventory.SlotFilteredItemHandler;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.recipe.OreTreeReconstructorRecipe;
 import org.mob.ore_trees_reboot.recipe.OreTreeReconstructorRecipeInput;
@@ -38,6 +41,12 @@ public class OreTreeReconstructorBlockEntity extends BlockEntity implements Menu
             }
         }
     };
+
+    // Unified automation handler: insert only into 0–2, extract only from 3–11
+    private final IItemHandler ioHandler =
+            new SlotFilteredItemHandler(itemHandler,
+                    java.util.List.of(0),    // input slots
+                    java.util.List.of(1)); // output slots
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
@@ -183,5 +192,9 @@ public class OreTreeReconstructorBlockEntity extends BlockEntity implements Menu
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    public @Nullable IItemHandler getItemHandler(@Nullable Direction side) {
+        return ioHandler;
     }
 }
