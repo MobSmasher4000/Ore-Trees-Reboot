@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ore_trees_reboot:block/ore_tree_crafter_top",
+    "side": "ore_trees_reboot:block/ore_tree_crafter"
+  }
+}

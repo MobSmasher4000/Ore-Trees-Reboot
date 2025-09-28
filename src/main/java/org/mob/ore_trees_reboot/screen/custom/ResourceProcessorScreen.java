@@ -42,7 +42,7 @@ public class ResourceProcessorScreen extends AbstractContainerScreen<ResourcePro
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(ARROW_TEXTURE,x + 84, y + 52, 0, 0, menu.getScaledArrowProgress(), 16, 24, 16);
+            guiGraphics.blit(ARROW_TEXTURE,x + 80, y + 50, 0, 0, menu.getScaledArrowProgress(), 16, 24, 16);
         }
     }
 
@@ -56,6 +56,16 @@ public class ResourceProcessorScreen extends AbstractContainerScreen<ResourcePro
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         guiGraphics.drawString(this.font, this.playerInventoryTitle, 8, this.imageHeight - 65, 4210752, false);
         guiGraphics.drawString(this.font, this.title, 8, 6, 4210752, false);
+
+        // --- draw progress text above arrow ---
+        int progress = menu.getProgress();
+        int maxProgress = menu.getMaxProgress();
+
+        String progressText = progress + " / " + maxProgress;
+        int textX = 84 - 17;
+        int textY = 52 - 12;
+
+        guiGraphics.drawString(this.font, progressText, textX, textY, 4210752, false);
     }
 
 }

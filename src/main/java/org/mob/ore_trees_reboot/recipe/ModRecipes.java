@@ -35,6 +35,16 @@ public class ModRecipes {
                 }
             });
 
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<OreTreeCrafterRecipe>> ORE_TREE_CRAFTER_SERIALIZER =
+            SERIALIZERS.register("ore_tree_crafter", OreTreeCrafterRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeType<?>, RecipeType<OreTreeCrafterRecipe>> ORE_TREE_CRAFTER_TYPE =
+            TYPES.register("ore_tree_crafter", () -> new RecipeType<OreTreeCrafterRecipe>() {
+                @Override
+                public String toString() {
+                    return "ore_tree_crafter";
+                }
+            });
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
         TYPES.register(eventBus);

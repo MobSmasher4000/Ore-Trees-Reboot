@@ -32,9 +32,9 @@ public class ResourceProcessorMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
 //        input slots
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 64, 32));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 64, 50));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 64, 68));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 46, 32));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 46, 50));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 46, 68));
 
 //        output slots
         this.addSlot(new OutputSlot(blockEntity.itemHandler, 3, 113, 32));
@@ -133,6 +133,14 @@ public class ResourceProcessorMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 170));
         }
+    }
+
+    public int getProgress() {
+        return data.get(0);
+    }
+
+    public int getMaxProgress() {
+        return data.get(1);
     }
 
     public int getEnergyStored() {

@@ -19,6 +19,7 @@ public class ModBlockLootProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.ORE_TREE_RECONSTRUCTOR.get());
         dropSelf(ModBlocks.RESOURCE_PROCESSOR.get());
+        dropSelf(ModBlocks.ORE_TREE_CRAFTER.get());
 
         dropSelf(ModBlocks.IRON_LOG.get());
         dropSelf(ModBlocks.GOLD_LOG.get());

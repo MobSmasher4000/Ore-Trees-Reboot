@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import org.mob.ore_trees_reboot.util.Formatting;
 
+import java.util.List;
 import java.util.function.IntSupplier;
 
 import static org.mob.ore_trees_reboot.Ore_trees_reboot.resourceLocation;
@@ -40,9 +41,9 @@ public class EnergyBarWidget extends AbstractWidget {
 
         if (mouseX >= this.getX() && mouseY >= this.getY() && mouseX < this.getX() + this.width && mouseY < this.getY() + this.height) {
             var font = Minecraft.getInstance().font;
-            var text = Formatting.number(this.energy.getAsInt()).append(" / ").append(Formatting.energy(this.capacity.getAsInt()).append(Formatting.perTick(200)));
+            var tooltip = Formatting.number(this.energy.getAsInt()).append(" / ").append(Formatting.energy(this.capacity.getAsInt()).append(Component.literal("Cost: ")).append(Formatting.perTick(200)));
 
-            gfx.renderTooltip(font, text, mouseX, mouseY);
+            gfx.renderTooltip(font, tooltip, mouseX, mouseY);
         }
     }
 

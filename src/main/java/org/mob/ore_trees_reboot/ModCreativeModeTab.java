@@ -21,6 +21,7 @@ public class ModCreativeModeTab {
 
         output.accept(ModBlocks.ORE_TREE_RECONSTRUCTOR.get());
         output.accept(ModBlocks.RESOURCE_PROCESSOR.get());
+        output.accept(ModBlocks.ORE_TREE_CRAFTER.get());
 
         output.accept(ModBlocks.IRON_LEAVES.get());
         output.accept(ModBlocks.GOLD_LEAVES.get());

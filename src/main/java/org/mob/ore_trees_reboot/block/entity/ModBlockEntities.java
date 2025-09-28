@@ -21,6 +21,10 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("resource_processor_be", () -> BlockEntityType.Builder.of(
                     ResourceProcessorBlockEntity::new, ModBlocks.RESOURCE_PROCESSOR.get()).build(null));
 
+    public static final Supplier<BlockEntityType<OreTreeCrafterBlockEntity>> ORE_TREE_CRAFTER_BE =
+            BLOCK_ENTITIES.register("ore_tree_crafter_be", () -> BlockEntityType.Builder.of(
+                    OreTreeCrafterBlockEntity::new, ModBlocks.ORE_TREE_CRAFTER.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

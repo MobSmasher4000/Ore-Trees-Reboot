@@ -15,10 +15,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.mob.ore_trees_reboot.Ore_trees_reboot;
-import org.mob.ore_trees_reboot.block.custom.ModOreTreeLog;
-import org.mob.ore_trees_reboot.block.custom.ModSaplingBlock;
-import org.mob.ore_trees_reboot.block.custom.OreTreeReconstructorBlock;
-import org.mob.ore_trees_reboot.block.custom.ResourceProcessorBlock;
+import org.mob.ore_trees_reboot.block.custom.*;
 import org.mob.ore_trees_reboot.item.ModItems;
 import org.mob.ore_trees_reboot.worldgen.tree.ModTreeGrowers;
 
@@ -274,23 +271,15 @@ public class ModBlocks {
 
     //    Ore Tree Reconstructor
     public static final DeferredBlock<Block> ORE_TREE_RECONSTRUCTOR = registerBlock("ore_tree_reconstructor",
-            ()-> new OreTreeReconstructorBlock(BlockBehaviour.Properties.of()){
-                @Override
-                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.translatable("tooltip.ore_trees_reboot.ore_tree_constructor"));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            });
+            ()-> new OreTreeReconstructorBlock(BlockBehaviour.Properties.of()));
 
 //    Resource Processor
     public static final DeferredBlock<Block> RESOURCE_PROCESSOR = registerBlock("resource_processor",
-            () -> new ResourceProcessorBlock(BlockBehaviour.Properties.of()){
-                @Override
-                public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.translatable("tooltip.ore_trees_reboot.resource_processor"));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            });
+            () -> new ResourceProcessorBlock(BlockBehaviour.Properties.of()));
+
+    //    Ore Tree Crafter
+    public static final DeferredBlock<Block> ORE_TREE_CRAFTER = registerBlock("ore_tree_crafter",
+            ()-> new OreTreeCrafterBlock(BlockBehaviour.Properties.of()));
 
 //    Ore Tree Dirts
     public static final DeferredBlock<Block> IRON_DIRT = registerBlock("iron_dirt",

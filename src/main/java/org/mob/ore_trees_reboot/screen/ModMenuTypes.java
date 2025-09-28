@@ -9,6 +9,7 @@ import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.mob.ore_trees_reboot.Ore_trees_reboot;
+import org.mob.ore_trees_reboot.screen.custom.OreTreeCrafterMenu;
 import org.mob.ore_trees_reboot.screen.custom.OreTreeReconstructorMenu;
 import org.mob.ore_trees_reboot.screen.custom.ResourceProcessorMenu;
 
@@ -22,6 +23,9 @@ public class ModMenuTypes {
 
     public static final DeferredHolder<MenuType<?>, MenuType<ResourceProcessorMenu>> RESOURCE_PROCESSOR_MENU =
             registerMenuType("resource_processor_menu", ResourceProcessorMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<OreTreeCrafterMenu>> ORE_TREE_CRAFTER_MENU =
+            registerMenuType("ore_tree_crafter_menu", OreTreeCrafterMenu::new);
 
     private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name,
                                                                                                               IContainerFactory<T> factory) {

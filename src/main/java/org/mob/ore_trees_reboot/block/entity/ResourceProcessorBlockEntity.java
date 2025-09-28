@@ -54,14 +54,7 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
 
 
     // --- Energy handler ---
-    private final EnergyStorage energyStorage = new EnergyStorage(100_000, 10_000, 0) {
-
-        @Override
-        public int extractEnergy(int maxExtract, boolean simulate) {
-            return 0; // disable extraction
-        }
-
-    };
+    private final EnergyStorage energyStorage = new EnergyStorage(100_000, 10_000, 10_000);
 
     // Helper getters (like normal variables)
     public int getEnergy() {
@@ -184,7 +177,7 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         }
 
         // Consume energy for this tick
-        this.energyStorage.extractEnergy(energyPerTick, false);
+        energyStorage.extractEnergy(energyPerTick, false);
 
         // Increase crafting progress
         increaseCraftingProgress();
