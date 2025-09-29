@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_coal_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:coal_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ore_trees_reboot:ore_tree_crafter/coal_dirt_from_ore_tree_crafter"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_coal_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ore_trees_reboot:ore_tree_crafter/coal_dirt_from_ore_tree_crafter"
+    ]
+  }
+}

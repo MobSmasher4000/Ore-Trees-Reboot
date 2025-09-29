@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_netherite_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ore_trees_reboot:ore_tree_crafter/ancient_sapling_from_ore_tree_crafter"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_netherite_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ore_trees_reboot:ore_tree_crafter/ancient_sapling_from_ore_tree_crafter"
+    ]
+  }
+}

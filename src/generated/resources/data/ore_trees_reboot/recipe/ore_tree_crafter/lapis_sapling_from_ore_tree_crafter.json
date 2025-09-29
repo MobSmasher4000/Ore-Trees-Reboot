@@ -1,0 +1,47 @@
+{
+  "type": "ore_trees_reboot:ore_tree_crafter",
+  "ingredients": [
+    {
+      "count": 1,
+      "item": "ore_trees_reboot:crafting_base"
+    },
+    {
+      "count": 1,
+      "item": "ore_trees_reboot:ore_tree_shard"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:lapis_block"
+    },
+    {
+      "count": 1,
+      "item": "ore_trees_reboot:ore_tree_shard"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:lapis_block"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:lapis_block"
+    },
+    {
+      "count": 1,
+      "item": "ore_trees_reboot:ore_tree_shard"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:lapis_block"
+    },
+    {
+      "count": 1,
+      "item": "ore_trees_reboot:ore_tree_shard"
+    }
+  ],
+  "output": [
+    {
+      "count": 1,
+      "id": "ore_trees_reboot:lapis_sapling"
+    }
+  ]
+}
