@@ -1,54 +1,78 @@
 package org.mob.ore_trees_reboot.recipe;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
+import org.mob.ore_trees_reboot.recipe.ModRecipes;
+import org.mob.ore_trees_reboot.recipe.input.OreTreeCrafterRecipeInput;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public record OreTreeCrafterRecipe(List<Ingredient> inputItems, ItemStack output) implements Recipe<OreTreeCrafterRecipeInput> {
+import static org.mob.ore_trees_reboot.Ore_trees_reboot.resourceLocation;
 
-    @Override
-    public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.of(Ingredient.EMPTY, inputItems.toArray(new Ingredient[0]));
+public class OreTreeCrafterRecipe implements Recipe<OreTreeCrafterRecipeInput> {
+    private final List<SizedIngredient> inputItems;
+    private final List<ItemStack> output;
+
+    public OreTreeCrafterRecipe(List<SizedIngredient> inputItems, List<ItemStack> output) {
+        this.inputItems = inputItems;
+        this.output = output;
     }
 
     @Override
-    public boolean matches(OreTreeCrafterRecipeInput inv, Level level) {
-        if (level.isClientSide()) return false;
-        for (int i = 0; i < inputItems.size(); i++) {
-            if (!inputItems.get(i).test(inv.getItem(i))) return false;
+    public boolean matches(OreTreeCrafterRecipeInput oreTreeCrafterRecipeInput, Level level) {
+        List<ItemStack> inputItems = oreTreeCrafterRecipeInput.inputItems();
+        List<SizedIngredient> remainingIngredients  = new ArrayList<>(this.inputItems);
+
+        for (ItemStack itemStack : inputItems) {
+            if (itemStack.isEmpty()) {
+                continue;
+            }
+
+            boolean ingredientFound = false;
+            Iterator<SizedIngredient> iterator = remainingIngredients.iterator();
+
+            while (iterator.hasNext()) {
+                SizedIngredient ingredient = iterator.next();
+                if (ingredient.ingredient().test(itemStack)) {
+                    iterator.remove();
+                    ingredientFound = true;
+                    break;
+                }
+            }
+
+            if (!ingredientFound) {
+                return false;
+            }
         }
-        return true;
+
+        return remainingIngredients.isEmpty();
     }
 
     @Override
-    public ItemStack assemble(OreTreeCrafterRecipeInput inv, HolderLookup.Provider provider) {
-        return output.copy();
+    public ItemStack assemble(OreTreeCrafterRecipeInput oreTreeCrafterRecipeInput, HolderLookup.Provider provider) {
+        return output.isEmpty() ? ItemStack.EMPTY : output.get(0).copy();
     }
 
     @Override
-    public boolean canCraftInDimensions(int width, int height) {
+    public boolean canCraftInDimensions(int i, int i1) {
         return true;
     }
 
     @Override
     public ItemStack getResultItem(HolderLookup.Provider provider) {
-        return output;
+        return output.isEmpty() ? ItemStack.EMPTY : output.get(0).copy();
     }
 
     @Override
@@ -61,42 +85,64 @@ public record OreTreeCrafterRecipe(List<Ingredient> inputItems, ItemStack output
         return ModRecipes.ORE_TREE_CRAFTER_TYPE.get();
     }
 
-    public static class Serializer implements RecipeSerializer<OreTreeCrafterRecipe> {
+    public List<SizedIngredient> getInputItems() {
+        return inputItems;
+    }
 
-        public static final MapCodec<OreTreeCrafterRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
-                instance.group(
-                        Ingredient.CODEC.listOf(9, 9).fieldOf("ingredient").forGetter(OreTreeCrafterRecipe::inputItems),
-                        ItemStack.CODEC.fieldOf("result").forGetter(OreTreeCrafterRecipe::output)
-                ).apply(instance, OreTreeCrafterRecipe::new)
-        );
+    public List<ItemStack> getOutput() {
+        return output;
+    }
+
+    public static class Serializer implements RecipeSerializer<OreTreeCrafterRecipe>{
+        public static final OreTreeCrafterRecipe.Serializer INSTANCE = new OreTreeCrafterRecipe.Serializer();
+        public static final ResourceLocation ID = resourceLocation("ore_tree_crafter");
+
+        private final MapCodec<OreTreeCrafterRecipe> CODEC = RecordCodecBuilder.mapCodec(oreTreeCrafterRecipeInstance -> oreTreeCrafterRecipeInstance.group(
+                SizedIngredient.FLAT_CODEC.listOf().fieldOf("ingredients").forGetter(OreTreeCrafterRecipe::getInputItems),
+                ItemStack.CODEC.listOf().fieldOf("output").forGetter(OreTreeCrafterRecipe::getOutput)
+        ).apply(oreTreeCrafterRecipeInstance, OreTreeCrafterRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, OreTreeCrafterRecipe> STREAM_CODEC = StreamCodec.of(
-                buf -> {
-                    // read 9 ingredients from buffer
-                    Ingredient[] ingredients = new Ingredient[9];
-                    for (int i = 0; i < 9; i++) {
-                        ingredients[i] = Ingredient.fromNetwork(buf);
-                    }
-                    ItemStack output = buf.readItem();
-                    return new OreTreeCrafterRecipe(List.of(ingredients), output);
-                },
-                (buf, recipe) -> {
-                    // write 9 ingredients to buffer
-                    for (Ingredient ing : recipe.inputItems()) {
-                        ing.toNetwork(buf);
-                    }
-                    buf.writeItem(recipe.output());
-                }
+                OreTreeCrafterRecipe.Serializer::toNetwork, OreTreeCrafterRecipe.Serializer::fromNetwork
         );
 
         @Override
         public MapCodec<OreTreeCrafterRecipe> codec() {
-            return null;
+            return CODEC;
         }
 
         @Override
         public StreamCodec<RegistryFriendlyByteBuf, OreTreeCrafterRecipe> streamCodec() {
-            return null;
+            return STREAM_CODEC;
+        }
+
+        private static OreTreeCrafterRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
+            int ingredientCount = buffer.readVarInt();
+            List<SizedIngredient> inputItems = new ArrayList<>(ingredientCount);
+            for (int i = 0; i < ingredientCount; i++) {
+                inputItems.add(SizedIngredient.STREAM_CODEC.decode(buffer));
+            }
+
+            int outputCount = buffer.readVarInt();
+            List<ItemStack> result = new ArrayList<>(outputCount);
+            for (int i = 0; i < outputCount; i++) {
+                result.add(ItemStack.STREAM_CODEC.decode(buffer));
+            }
+
+            return new OreTreeCrafterRecipe(inputItems, result);
+        }
+
+        private static void toNetwork(RegistryFriendlyByteBuf buffer, OreTreeCrafterRecipe recipe) {
+            buffer.writeVarInt(recipe.inputItems.size());
+            for (SizedIngredient ingredient : recipe.inputItems) {
+                SizedIngredient.STREAM_CODEC.encode(buffer, ingredient);
+            }
+
+            buffer.writeVarInt(recipe.output.size());
+            for (ItemStack itemStack : recipe.output) {
+                ItemStack.STREAM_CODEC.encode(buffer, itemStack);
+            }
+
         }
     }
 }

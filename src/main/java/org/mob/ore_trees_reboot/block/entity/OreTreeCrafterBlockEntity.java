@@ -1,6 +1,7 @@
 package org.mob.ore_trees_reboot.block.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -19,13 +20,19 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
+import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
+import org.mob.ore_trees_reboot.inventory.SlotFilteredItemHandler;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.recipe.OreTreeCrafterRecipe;
-import org.mob.ore_trees_reboot.recipe.OreTreeCrafterRecipeInput;
+import org.mob.ore_trees_reboot.recipe.input.OreTreeCrafterRecipeInput;
 import org.mob.ore_trees_reboot.screen.custom.OreTreeCrafterMenu;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
@@ -41,9 +48,27 @@ public class OreTreeCrafterBlockEntity extends BlockEntity implements MenuProvid
         }
     };
 
-    public static final int CORE_INPUT_SLOT = 0;
-    public static final int OUTPUT_SLOT = 9;
-    private static final int[] INPUT_SLOTS = IntStream.rangeClosed(1, 8).toArray();
+    // Unified automation handler: insert only into 0–2, extract only from 3–11
+    private final IItemHandler ioHandler =
+            new SlotFilteredItemHandler(itemHandler,
+                    java.util.List.of(0, 1, 2, 3, 4, 5, 6, 7, 8),    // input slots
+                    java.util.List.of(9)); // output slots
+    ;
+
+    // --- Energy handler ---
+    private final EnergyStorage energyStorage = new EnergyStorage(100_000, 10_000, 10_000);
+
+    // Helper getters (like normal variables)
+    public int getEnergy() {
+        return energyStorage.getEnergyStored();
+    }
+
+    public int getMaxEnergy() {
+        return energyStorage.getMaxEnergyStored();
+    }
+
+    private static final int[] INPUT_SLOTS = IntStream.rangeClosed(0, 8).toArray();
+    private static final int OUTPUT_SLOT = 9;
 
     protected final ContainerData data;
     private int progress = 0;
@@ -57,6 +82,8 @@ public class OreTreeCrafterBlockEntity extends BlockEntity implements MenuProvid
                 return switch (i){
                     case 0 -> OreTreeCrafterBlockEntity.this.progress;
                     case 1 -> OreTreeCrafterBlockEntity.this.maxProgress;
+                    case 2 -> OreTreeCrafterBlockEntity.this.getEnergy();
+                    case 3 -> OreTreeCrafterBlockEntity.this.getMaxEnergy();
                     default -> 0;
                 };
             }
@@ -66,13 +93,14 @@ public class OreTreeCrafterBlockEntity extends BlockEntity implements MenuProvid
                 switch (i){
                     case 0: OreTreeCrafterBlockEntity.this.progress = value;
                     case 1: OreTreeCrafterBlockEntity.this.maxProgress = value;
+                    case 2: OreTreeCrafterBlockEntity.this.energyStorage.receiveEnergy(value - energyStorage.getEnergyStored(), false);
                 }
 
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 4;
             }
         };
     }
@@ -101,6 +129,7 @@ public class OreTreeCrafterBlockEntity extends BlockEntity implements MenuProvid
         pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
         pTag.putInt("ore_tree_crafter.progress", progress);
         pTag.putInt("ore_tree_crafter.max_progress", maxProgress);
+        pTag.put("energy", energyStorage.serializeNBT(pRegistries));
 
         super.saveAdditional(pTag, pRegistries);
     }
@@ -112,20 +141,25 @@ public class OreTreeCrafterBlockEntity extends BlockEntity implements MenuProvid
         itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
         progress = pTag.getInt("ore_tree_crafter.progress");
         maxProgress = pTag.getInt("ore_tree_crafter.max_progress");
+        energyStorage.deserializeNBT(pRegistries, pTag.get("energy"));
     }
 
-    //todo
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
-        if(hasRecipe()) {
+        setChanged(level, blockPos, blockState);
+
+        if(hasRecipe() && energyStorage.getEnergyStored() >= 1){
             increaseCraftingProgress();
+            energyStorage.extractEnergy(200, false);
             setChanged(level, blockPos, blockState);
 
             if(hasCraftingFinished()) {
                 craftItem();
                 resetProgress();
+                setChanged(level, blockPos, blockState);
             }
         } else {
             resetProgress();
+            setChanged(level, blockPos, blockState);
         }
 
     }
@@ -139,21 +173,45 @@ public class OreTreeCrafterBlockEntity extends BlockEntity implements MenuProvid
     }
 
     private void resetProgress() {
-        progress = 0;
-        maxProgress = 72;
+        this.progress = 0;
+        this.maxProgress = maxProgress;
     }
 
     private void craftItem() {
         Optional<RecipeHolder<OreTreeCrafterRecipe>> recipe = getCurrentRecipe();
-        ItemStack output = recipe.get().value().output();
+        if (recipe.isPresent()) {
+            List<ItemStack> results = recipe.get().value().getOutput();
 
-        itemHandler.extractItem(CORE_INPUT_SLOT, 1, false);
-        for (int i = 1; i <9; i++) {
-            itemHandler.extractItem(i, 1, false);
+            // Track how much to extract from each slot
+            int[] extractCounts = new int[itemHandler.getSlots()];
+
+            // Go through all ingredients in the recipe
+            for (SizedIngredient ingredient : recipe.get().value().getInputItems()) {
+                for (int slot = 0; slot < 9; slot++) { // only first 9 are crafting inputs
+                    ItemStack stackInSlot = itemHandler.getStackInSlot(slot);
+                    if (!stackInSlot.isEmpty() && ingredient.test(stackInSlot)) {
+                        // Add how many we can extract (up to ingredient count)
+                        extractCounts[slot] += Math.min(stackInSlot.getCount(), ingredient.count());
+                    }
+                }
+            }
+
+            // Perform extractions
+            for (int slot = 0; slot < 9; slot++) {
+                if (extractCounts[slot] > 0) {
+                    itemHandler.extractItem(slot, extractCounts[slot], false);
+                }
+            }
+
+
+
+            for (ItemStack result : results) {
+                this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
+                            this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+
+                }
+            }
         }
-        itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
-                itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
-    }
 
     private boolean hasRecipe() {
         Optional<RecipeHolder<OreTreeCrafterRecipe>> recipe = getCurrentRecipe();
@@ -161,13 +219,13 @@ public class OreTreeCrafterBlockEntity extends BlockEntity implements MenuProvid
             return false;
         }
 
-        ItemStack output = recipe.get().value().output();
-        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+        List<ItemStack> output = recipe.get().value().getOutput();
+        return canInsertAmountIntoOutputSlot(output.size()) && canInsertItemIntoOutputSlot(output);
     }
 
-    private boolean canInsertItemIntoOutputSlot(ItemStack output) {
+    private boolean canInsertItemIntoOutputSlot(List<ItemStack> output) {
         return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
-                itemHandler.getStackInSlot(OUTPUT_SLOT).getItem() == output.getItem();
+                itemHandler.getStackInSlot(OUTPUT_SLOT).getItem() == output.getLast().getItem();
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
@@ -178,8 +236,15 @@ public class OreTreeCrafterBlockEntity extends BlockEntity implements MenuProvid
     }
 
     private Optional<RecipeHolder<OreTreeCrafterRecipe>> getCurrentRecipe() {
+
+        List<ItemStack> inputs = new ArrayList<>();
+
+        for (int i = 0; i < 9; i++) {
+            inputs.add(this.itemHandler.getStackInSlot(i));
+        }
+
         return this.level.getRecipeManager()
-                .getRecipeFor(ModRecipes.ORE_TREE_CRAFTER_TYPE.get(), new OreTreeCrafterRecipeInput(itemHandler.getStackInSlot(CORE_INPUT_SLOT)), level);
+                .getRecipeFor(ModRecipes.ORE_TREE_CRAFTER_TYPE.get(), new OreTreeCrafterRecipeInput(inputs), level);
     }
 
     @Override
@@ -191,5 +256,13 @@ public class OreTreeCrafterBlockEntity extends BlockEntity implements MenuProvid
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    public @Nullable IItemHandler getItemHandler(@Nullable Direction side) {
+        return ioHandler;
+    }
+
+    public @Nullable EnergyStorage getEnergyStorage(@Nullable Direction side) {
+        return energyStorage;
     }
 }

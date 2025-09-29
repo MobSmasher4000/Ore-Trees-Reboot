@@ -11,6 +11,7 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 import org.mob.ore_trees_reboot.block.ModBlocks;
 import org.mob.ore_trees_reboot.block.entity.OreTreeCrafterBlockEntity;
 import org.mob.ore_trees_reboot.inventory.slot.OutputSlot;
+import org.mob.ore_trees_reboot.inventory.slot.SingleSlot;
 import org.mob.ore_trees_reboot.screen.ModMenuTypes;
 
 public class OreTreeCrafterMenu extends AbstractContainerMenu {
@@ -19,7 +20,7 @@ public class OreTreeCrafterMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public OreTreeCrafterMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
     }
 
     public OreTreeCrafterMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -31,16 +32,16 @@ public class OreTreeCrafterMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 85, 48));
+        this.addSlot(new SingleSlot(blockEntity.itemHandler, 0, 85, 48));
 
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 59, 23));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 84, 20));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 3, 109, 23));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 4, 56, 48));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 5, 111, 48));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 6, 59, 73));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 7, 84, 76));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 8, 109, 73));
+        this.addSlot(new SingleSlot(blockEntity.itemHandler, 1, 59, 23));
+        this.addSlot(new SingleSlot(blockEntity.itemHandler, 2, 84, 20));
+        this.addSlot(new SingleSlot(blockEntity.itemHandler, 3, 109, 23));
+        this.addSlot(new SingleSlot(blockEntity.itemHandler, 4, 56, 48));
+        this.addSlot(new SingleSlot(blockEntity.itemHandler, 5, 111, 48));
+        this.addSlot(new SingleSlot(blockEntity.itemHandler, 6, 59, 73));
+        this.addSlot(new SingleSlot(blockEntity.itemHandler, 7, 84, 76));
+        this.addSlot(new SingleSlot(blockEntity.itemHandler, 8, 109, 73));
 
         this.addSlot(new OutputSlot(blockEntity.itemHandler, 9, 167, 49));
 
@@ -118,14 +119,30 @@ public class OreTreeCrafterMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 18 + l * 18, 135 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
+            this.addSlot(new Slot(playerInventory, i, 18 + i * 18, 193));
         }
+    }
+
+    public int getEnergyStored() {
+        return data.get(2);
+    }
+
+    public int getMaxEnergyStored(){
+        return data.get(3);
+    }
+
+    public int getProgress() {
+        return data.get(0);
+    }
+
+    public int getMaxProgress(){
+        return data.get(1);
     }
 }

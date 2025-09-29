@@ -1,4 +1,4 @@
-package org.mob.ore_trees_reboot.recipe;
+package org.mob.ore_trees_reboot.recipe.input;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;

@@ -102,6 +102,14 @@ public class Ore_trees_reboot {
                 ModBlockEntities.ORE_TREE_RECONSTRUCTOR_BE.get(),
                 (be, side)-> be.getItemHandler(side));
 
+//        Ore tree crafter
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.ORE_TREE_CRAFTER_BE.get(),
+                (be, side) -> be.getItemHandler(side));
+
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK,
+                ModBlockEntities.ORE_TREE_CRAFTER_BE.get(),
+                (be, side) -> be.getEnergyStorage(side));
     }
 
 }

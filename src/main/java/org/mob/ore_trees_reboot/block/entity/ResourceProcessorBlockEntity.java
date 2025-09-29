@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import org.mob.ore_trees_reboot.inventory.SlotFilteredItemHandler;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.recipe.ResourceProcessorRecipe;
-import org.mob.ore_trees_reboot.recipe.ResourceProcessorRecipeInput;
+import org.mob.ore_trees_reboot.recipe.input.ResourceProcessorRecipeInput;
 import org.mob.ore_trees_reboot.screen.custom.ResourceProcessorMenu;
 
 import java.util.Optional;
@@ -265,7 +265,7 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
     }
 
     public @Nullable EnergyStorage getEnergyStorage(@Nullable Direction side) {
-        return energyStorage; // same for all sides
+        return energyStorage;
     }
 
 }

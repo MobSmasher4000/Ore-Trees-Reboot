@@ -3,12 +3,18 @@ package org.mob.ore_trees_reboot.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
+import org.mob.ore_trees_reboot.Ore_trees_reboot;
 import org.mob.ore_trees_reboot.block.ModBlocks;
+import org.mob.ore_trees_reboot.datagen.builder.OreTreeCrafterRecipeBuilder;
 import org.mob.ore_trees_reboot.item.ModItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,28 +27,29 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
 
-        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.IRON_SAPLING.get(), Blocks.IRON_BLOCK);
-        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.GOLD_SAPLING.get(), Blocks.GOLD_BLOCK);
-        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.COPPER_SAPLING.get(), Blocks.COPPER_BLOCK);
-        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.LAPIS_SAPLING.get(), Blocks.LAPIS_BLOCK);
-        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.DIAMOND_SAPLING.get(), Blocks.DIAMOND_BLOCK);
-        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.REDSTONE_SAPLING.get(), Blocks.REDSTONE_BLOCK);
-        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.ANCIENT_SAPLING.get(), Blocks.NETHERITE_BLOCK);
-        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.QUARTZ_SAPLING.get(), Blocks.QUARTZ_BLOCK);
-        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.COAL_SAPLING.get(), Blocks.COAL_BLOCK);
-        tempSaplingCraftingRecipe(recipeOutput, ModBlocks.EMERALD_SAPLING.get(), Blocks.EMERALD_BLOCK);
+//        Saplings
+        oreTreeCrafterSaplingRecipe(recipeOutput, SizedIngredient.of(Blocks.IRON_BLOCK, 1), ModBlocks.IRON_SAPLING, 1);
+        oreTreeCrafterSaplingRecipe(recipeOutput, SizedIngredient.of(Blocks.GOLD_BLOCK, 1), ModBlocks.GOLD_SAPLING, 1);
+        oreTreeCrafterSaplingRecipe(recipeOutput, SizedIngredient.of(Blocks.COPPER_BLOCK, 1), ModBlocks.COPPER_SAPLING, 1);
+        oreTreeCrafterSaplingRecipe(recipeOutput, SizedIngredient.of(Blocks.LAPIS_BLOCK, 1), ModBlocks.LAPIS_SAPLING, 1);
+        oreTreeCrafterSaplingRecipe(recipeOutput, SizedIngredient.of(Blocks.DIAMOND_BLOCK, 1), ModBlocks.DIAMOND_SAPLING, 1);
+        oreTreeCrafterSaplingRecipe(recipeOutput, SizedIngredient.of(Blocks.REDSTONE_BLOCK, 1), ModBlocks.REDSTONE_SAPLING, 1);
+        oreTreeCrafterSaplingRecipe(recipeOutput, SizedIngredient.of(Blocks.COAL_BLOCK, 1), ModBlocks.COAL_SAPLING, 1);
+        oreTreeCrafterSaplingRecipe(recipeOutput, SizedIngredient.of(Blocks.QUARTZ_BLOCK, 1), ModBlocks.QUARTZ_SAPLING, 1);
+        oreTreeCrafterSaplingRecipe(recipeOutput, SizedIngredient.of(Blocks.EMERALD_BLOCK, 1), ModBlocks.EMERALD_SAPLING, 1);
+        oreTreeCrafterSaplingRecipe(recipeOutput, SizedIngredient.of(Blocks.NETHERITE_BLOCK, 1), ModBlocks.ANCIENT_SAPLING, 1);
 
-        tempDirtCraftingRecipe(recipeOutput, ModBlocks.IRON_DIRT.get(), Blocks.IRON_BLOCK);
-        tempDirtCraftingRecipe(recipeOutput, ModBlocks.GOLD_DIRT.get(), Blocks.GOLD_BLOCK);
-        tempDirtCraftingRecipe(recipeOutput, ModBlocks.COPPER_DIRT.get(), Blocks.COPPER_BLOCK);
-        tempDirtCraftingRecipe(recipeOutput, ModBlocks.LAPIS_DIRT.get(), Blocks.LAPIS_BLOCK);
-        tempDirtCraftingRecipe(recipeOutput, ModBlocks.DIAMOND_DIRT.get(), Blocks.DIAMOND_BLOCK);
-        tempDirtCraftingRecipe(recipeOutput, ModBlocks.REDSTONE_DIRT.get(), Blocks.REDSTONE_BLOCK);
-        tempDirtCraftingRecipe(recipeOutput, ModBlocks.ANCIENT_DIRT.get(), Blocks.NETHERITE_BLOCK);
-        tempDirtCraftingRecipe(recipeOutput, ModBlocks.COAL_DIRT.get(), Blocks.COAL_BLOCK);
-        tempDirtCraftingRecipe(recipeOutput, ModBlocks.QUARTZ_DIRT.get(), Blocks.QUARTZ_BLOCK);
-        tempDirtCraftingRecipe(recipeOutput, ModBlocks.EMERALD_DIRT.get(), Blocks.EMERALD_BLOCK);
-
+//        Dirt
+        oreTreeCrafterDirtRecipe(recipeOutput, SizedIngredient.of(Blocks.IRON_BLOCK, 1), ModBlocks.IRON_DIRT, 1);
+        oreTreeCrafterDirtRecipe(recipeOutput, SizedIngredient.of(Blocks.GOLD_BLOCK, 1), ModBlocks.GOLD_DIRT, 1);
+        oreTreeCrafterDirtRecipe(recipeOutput, SizedIngredient.of(Blocks.COPPER_BLOCK, 1), ModBlocks.COPPER_DIRT, 1);
+        oreTreeCrafterDirtRecipe(recipeOutput, SizedIngredient.of(Blocks.LAPIS_BLOCK, 1), ModBlocks.LAPIS_DIRT, 1);
+        oreTreeCrafterDirtRecipe(recipeOutput, SizedIngredient.of(Blocks.DIAMOND_BLOCK, 1), ModBlocks.DIAMOND_DIRT, 1);
+        oreTreeCrafterDirtRecipe(recipeOutput, SizedIngredient.of(Blocks.REDSTONE_BLOCK, 1), ModBlocks.REDSTONE_DIRT, 1);
+        oreTreeCrafterDirtRecipe(recipeOutput, SizedIngredient.of(Blocks.COAL_BLOCK, 1), ModBlocks.COAL_DIRT, 1);
+        oreTreeCrafterDirtRecipe(recipeOutput, SizedIngredient.of(Blocks.QUARTZ_BLOCK, 1), ModBlocks.QUARTZ_DIRT, 1);
+        oreTreeCrafterDirtRecipe(recipeOutput, SizedIngredient.of(Blocks.EMERALD_BLOCK, 1), ModBlocks.EMERALD_DIRT, 1);
+        oreTreeCrafterDirtRecipe(recipeOutput, SizedIngredient.of(Blocks.NETHERITE_BLOCK, 1), ModBlocks.ANCIENT_DIRT, 1);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ORE_TREE_RECONSTRUCTOR.get())
                 .pattern("ICL")
@@ -70,6 +77,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_base", has(ModItems.Crafting_Base.get()))
                 .save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ORE_TREE_CRAFTER.get())
+                .pattern("SSS")
+                .pattern("SBS")
+                .pattern("SSS")
+                .define('S', ModItems.ORE_TREE_SHARD)
+                .define('B', ModItems.Crafting_Base)
+                .unlockedBy("has_base", has(ModItems.Crafting_Base))
+                .save(recipeOutput);
     }
 
     private static void tempSaplingCraftingRecipe(RecipeOutput recipeOutput, Block sapling, Block material) {
@@ -93,6 +108,38 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', ModItems.ORE_TREE_SHARD)
                 .unlockedBy("has_ore_shards", has(ModItems.ORE_TREE_SHARD))
                 .save(recipeOutput);
+    }
+
+    protected static void oreTreeCrafterSaplingRecipe(RecipeOutput recipeOutput, SizedIngredient material, ItemLike result, int outputCount){
+        OreTreeCrafterRecipeBuilder.oreTreeCrafterRecipe()
+                .addIngredient(SizedIngredient.of(ModItems.Crafting_Base, 1)) // 0
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 1
+                .addIngredient(material) // 2
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 3
+                .addIngredient(material) // 4
+                .addIngredient(material) // 5
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 6
+                .addIngredient(material) // 7
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 8
+                .addOutput(new ItemStack(result, outputCount))
+                .unlockedBy(getHasName(material.ingredient().getItems()[0].getItem()), has(material.ingredient().getItems()[0].getItem()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(Ore_trees_reboot.MOD_ID, "ore_tree_crafter/" + getItemName(result) + "_from_ore_tree_crafter"));
+    }
+
+    protected static void oreTreeCrafterDirtRecipe(RecipeOutput recipeOutput, SizedIngredient material, ItemLike result, int outputCount){
+        OreTreeCrafterRecipeBuilder.oreTreeCrafterRecipe()
+                .addIngredient(material) // 0
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 1
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 2
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 3
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 4
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 5
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 6
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 7
+                .addIngredient(SizedIngredient.of(ModItems.ORE_TREE_SHARD, 1)) // 8
+                .addOutput(new ItemStack(result, outputCount))
+                .unlockedBy(getHasName(material.ingredient().getItems()[0].getItem()), has(material.ingredient().getItems()[0].getItem()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(Ore_trees_reboot.MOD_ID, "ore_tree_crafter/" + getItemName(result) + "_from_ore_tree_crafter"));
     }
 
 

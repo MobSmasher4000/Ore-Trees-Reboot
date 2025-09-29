@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-24T17:46:46.5117949	Block States: ore_trees_reboot
+// 1.21.1	2025-09-29T14:46:27.046815	Block States: ore_trees_reboot
 c2367a8b0f1a4063e9800d9098be0a5460fcb129 assets/ore_trees_reboot/blockstates/ancient_dirt.json
 08d510f7e4b5a6ee2fbbe1382d2e0f8bbfbc7137 assets/ore_trees_reboot/blockstates/ancient_leaves.json
 8a69371683def8bb0632776424c8fe950e2a649b assets/ore_trees_reboot/blockstates/ancient_log.json
@@ -115,6 +115,7 @@ e291462effcbad699231e99c99d9f8974523e190 assets/ore_trees_reboot/models/item/iro
 37f21c120d3ca3d7298eb04d8cd3651bedff92bb assets/ore_trees_reboot/models/item/lapis_dirt.json
 354544706b7caf729aff9c602f1faacc29a1a30c assets/ore_trees_reboot/models/item/lapis_leaves.json
 65eb344289cae379a612f19f3abdc18de1cc3930 assets/ore_trees_reboot/models/item/lapis_log.json
+70f2d1cefff58cb361edcac8ecaa34470a71ccb1 assets/ore_trees_reboot/models/item/ore_tree_crafter.json
 2944782334abe363a8cc3e50e0bae75183569ba8 assets/ore_trees_reboot/models/item/ore_tree_reconstructor.json
 95712ceb7d81b6fe5cb595c82bfad7e8da7b8e1f assets/ore_trees_reboot/models/item/quartz_dirt.json
 6e28a655670afae156bbab374b8d930c8449cca0 assets/ore_trees_reboot/models/item/quartz_leaves.json

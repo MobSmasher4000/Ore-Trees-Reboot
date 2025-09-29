@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import org.mob.ore_trees_reboot.inventory.SlotFilteredItemHandler;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.recipe.OreTreeReconstructorRecipe;
-import org.mob.ore_trees_reboot.recipe.OreTreeReconstructorRecipeInput;
+import org.mob.ore_trees_reboot.recipe.input.OreTreeReconstructorRecipeInput;
 import org.mob.ore_trees_reboot.screen.custom.OreTreeReconstructorMenu;
 
 import java.util.Optional;

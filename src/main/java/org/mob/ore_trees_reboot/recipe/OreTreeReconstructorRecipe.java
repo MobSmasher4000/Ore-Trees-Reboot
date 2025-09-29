@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import org.mob.ore_trees_reboot.recipe.input.OreTreeReconstructorRecipeInput;
 
 public record OreTreeReconstructorRecipe(Ingredient inputItem, ItemStack output) implements Recipe<OreTreeReconstructorRecipeInput> {
     // inputItem & output ==> Read From JSON File!

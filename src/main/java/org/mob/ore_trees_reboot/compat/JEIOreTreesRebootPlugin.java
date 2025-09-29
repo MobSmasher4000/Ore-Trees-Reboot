@@ -14,8 +14,10 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import org.mob.ore_trees_reboot.Ore_trees_reboot;
 import org.mob.ore_trees_reboot.block.ModBlocks;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
+import org.mob.ore_trees_reboot.recipe.OreTreeCrafterRecipe;
 import org.mob.ore_trees_reboot.recipe.OreTreeReconstructorRecipe;
 import org.mob.ore_trees_reboot.recipe.ResourceProcessorRecipe;
+import org.mob.ore_trees_reboot.screen.custom.OreTreeCrafterScreen;
 import org.mob.ore_trees_reboot.screen.custom.OreTreeReconstructorScreen;
 import org.mob.ore_trees_reboot.screen.custom.ResourceProcessorScreen;
 
@@ -35,6 +37,9 @@ public class JEIOreTreesRebootPlugin implements IModPlugin {
 
         registration.addRecipeCategories(new ResourceProcessorRecipeCategory(
                 registration.getJeiHelpers().getGuiHelper()));
+
+        registration.addRecipeCategories(new OreTreeCrafterRecipeCategory(
+                registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -49,6 +54,10 @@ public class JEIOreTreesRebootPlugin implements IModPlugin {
                 .getAllRecipesFor(ModRecipes.RESOURCE_PROCESSOR_TYPE.get()).stream().map(RecipeHolder::value).toList();
         registration.addRecipes(ResourceProcessorRecipeCategory.RESOURCE_PROCESSOR_RECIPE_TYPE, resourceProcessorRecipes);
 
+        List<OreTreeCrafterRecipe> oreTreeCrafterRecipes = recipeManager
+                .getAllRecipesFor(ModRecipes.ORE_TREE_CRAFTER_TYPE.get()).stream().map(RecipeHolder::value).toList();
+        registration.addRecipes(OreTreeCrafterRecipeCategory.ORE_TREE_CRAFTER_RECIPE_TYPE, oreTreeCrafterRecipes);
+
     }
 
     @Override
@@ -59,6 +68,9 @@ public class JEIOreTreesRebootPlugin implements IModPlugin {
         registration.addRecipeClickArea(ResourceProcessorScreen.class, 85, 52, 22, 20,
                 ResourceProcessorRecipeCategory.RESOURCE_PROCESSOR_RECIPE_TYPE);
 
+        registration.addRecipeClickArea(OreTreeCrafterScreen.class, 135, 49, 20, 17,
+                OreTreeCrafterRecipeCategory.ORE_TREE_CRAFTER_RECIPE_TYPE);
+
     }
 
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
@@ -67,5 +79,8 @@ public class JEIOreTreesRebootPlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RESOURCE_PROCESSOR.get().asItem()),
                 ResourceProcessorRecipeCategory.RESOURCE_PROCESSOR_RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ORE_TREE_CRAFTER.get().asItem()),
+                OreTreeCrafterRecipeCategory.ORE_TREE_CRAFTER_RECIPE_TYPE);
     }
 }
