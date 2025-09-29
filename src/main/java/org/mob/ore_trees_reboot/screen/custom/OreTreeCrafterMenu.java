@@ -11,7 +11,6 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 import org.mob.ore_trees_reboot.block.ModBlocks;
 import org.mob.ore_trees_reboot.block.entity.OreTreeCrafterBlockEntity;
 import org.mob.ore_trees_reboot.inventory.slot.OutputSlot;
-import org.mob.ore_trees_reboot.inventory.slot.SingleSlot;
 import org.mob.ore_trees_reboot.screen.ModMenuTypes;
 
 public class OreTreeCrafterMenu extends AbstractContainerMenu {
@@ -32,16 +31,16 @@ public class OreTreeCrafterMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.addSlot(new SingleSlot(blockEntity.itemHandler, 0, 85, 48));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 85, 48));
 
-        this.addSlot(new SingleSlot(blockEntity.itemHandler, 1, 59, 23));
-        this.addSlot(new SingleSlot(blockEntity.itemHandler, 2, 84, 20));
-        this.addSlot(new SingleSlot(blockEntity.itemHandler, 3, 109, 23));
-        this.addSlot(new SingleSlot(blockEntity.itemHandler, 4, 56, 48));
-        this.addSlot(new SingleSlot(blockEntity.itemHandler, 5, 111, 48));
-        this.addSlot(new SingleSlot(blockEntity.itemHandler, 6, 59, 73));
-        this.addSlot(new SingleSlot(blockEntity.itemHandler, 7, 84, 76));
-        this.addSlot(new SingleSlot(blockEntity.itemHandler, 8, 109, 73));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 59, 23));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 84, 20));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 3, 109, 23));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 4, 56, 48));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 5, 111, 48));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 6, 59, 73));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 7, 84, 76));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 8, 109, 73));
 
         this.addSlot(new OutputSlot(blockEntity.itemHandler, 9, 167, 49));
 

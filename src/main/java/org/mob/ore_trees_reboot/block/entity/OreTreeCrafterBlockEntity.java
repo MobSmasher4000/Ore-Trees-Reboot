@@ -191,7 +191,7 @@ public class OreTreeCrafterBlockEntity extends BlockEntity implements MenuProvid
                     ItemStack stackInSlot = itemHandler.getStackInSlot(slot);
                     if (!stackInSlot.isEmpty() && ingredient.test(stackInSlot)) {
                         // Add how many we can extract (up to ingredient count)
-                        extractCounts[slot] += Math.min(stackInSlot.getCount(), ingredient.count());
+                        extractCounts[slot] = Math.min(stackInSlot.getCount(), ingredient.count());
                     }
                 }
             }
