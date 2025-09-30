@@ -28,7 +28,7 @@ import org.mob.ore_trees_reboot.inventory.SlotFilteredItemHandler;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.recipe.ResourceProcessorRecipe;
 import org.mob.ore_trees_reboot.recipe.input.ResourceProcessorRecipeInput;
-import org.mob.ore_trees_reboot.screen.custom.ResourceProcessorMenu;
+import org.mob.ore_trees_reboot.screen.menu.ResourceProcessorMenu;
 
 import java.util.Optional;
 import java.util.stream.IntStream;

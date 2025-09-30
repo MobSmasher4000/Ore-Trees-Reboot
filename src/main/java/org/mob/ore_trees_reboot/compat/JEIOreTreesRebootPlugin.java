@@ -17,9 +17,9 @@ import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.recipe.OreTreeCrafterRecipe;
 import org.mob.ore_trees_reboot.recipe.OreTreeReconstructorRecipe;
 import org.mob.ore_trees_reboot.recipe.ResourceProcessorRecipe;
-import org.mob.ore_trees_reboot.screen.custom.OreTreeCrafterScreen;
-import org.mob.ore_trees_reboot.screen.custom.OreTreeReconstructorScreen;
-import org.mob.ore_trees_reboot.screen.custom.ResourceProcessorScreen;
+import org.mob.ore_trees_reboot.screen.screen.OreTreeCrafterScreen;
+import org.mob.ore_trees_reboot.screen.screen.OreTreeReconstructorScreen;
+import org.mob.ore_trees_reboot.screen.screen.ResourceProcessorScreen;
 
 import java.util.List;
 

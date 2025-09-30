@@ -19,6 +19,29 @@ public class ModCreativeModeTab {
         output.accept(ModItems.Crafting_Base.get());
         output.accept(ModItems.ORE_TREE_SHARD.get());
 
+        output.accept(ModItems.UPGRADE_BASE.get());
+
+        output.accept(ModItems.UPGRADE_SPEED_TIER_1.get());
+        output.accept(ModItems.UPGRADE_SPEED_TIER_2.get());
+        output.accept(ModItems.UPGRADE_SPEED_TIER_3.get());
+        output.accept(ModItems.UPGRADE_SPEED_TIER_4.get());
+
+        output.accept(ModItems.UPGRADE_AMOUNT_TIER_1.get());
+        output.accept(ModItems.UPGRADE_AMOUNT_TIER_2.get());
+        output.accept(ModItems.UPGRADE_AMOUNT_TIER_3.get());
+        output.accept(ModItems.UPGRADE_AMOUNT_TIER_4.get());
+        output.accept(ModItems.UPGRADE_AMOUNT_TIER_5.get());
+        output.accept(ModItems.UPGRADE_AMOUNT_TIER_6.get());
+        output.accept(ModItems.UPGRADE_AMOUNT_TIER_7.get());
+
+        output.accept(ModItems.UPGRADE_TIER_1.get());
+        output.accept(ModItems.UPGRADE_TIER_2.get());
+        output.accept(ModItems.UPGRADE_TIER_3.get());
+        output.accept(ModItems.UPGRADE_TIER_4.get());
+        output.accept(ModItems.UPGRADE_TIER_5.get());
+        output.accept(ModItems.UPGRADE_TIER_6.get());
+        output.accept(ModItems.UPGRADE_TIER_7.get());
+
         output.accept(ModBlocks.ORE_TREE_RECONSTRUCTOR.get());
         output.accept(ModBlocks.RESOURCE_PROCESSOR.get());
         output.accept(ModBlocks.ORE_TREE_CRAFTER.get());

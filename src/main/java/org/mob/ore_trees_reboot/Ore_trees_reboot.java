@@ -14,17 +14,16 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.items.IItemHandler;
 import org.mob.ore_trees_reboot.block.ModBlocks;
 import org.mob.ore_trees_reboot.block.entity.ModBlockEntities;
-import org.mob.ore_trees_reboot.block.entity.ResourceProcessorBlockEntity;
+import org.mob.ore_trees_reboot.component.ModDataComponents;
 import org.mob.ore_trees_reboot.item.ModItems;
 import org.mob.ore_trees_reboot.loot.ModLootModifiers;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.screen.ModMenuTypes;
-import org.mob.ore_trees_reboot.screen.custom.OreTreeCrafterScreen;
-import org.mob.ore_trees_reboot.screen.custom.OreTreeReconstructorScreen;
-import org.mob.ore_trees_reboot.screen.custom.ResourceProcessorScreen;
+import org.mob.ore_trees_reboot.screen.screen.OreTreeCrafterScreen;
+import org.mob.ore_trees_reboot.screen.screen.OreTreeReconstructorScreen;
+import org.mob.ore_trees_reboot.screen.screen.ResourceProcessorScreen;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -49,6 +48,7 @@ public class Ore_trees_reboot {
         ModBlockEntities.register(modEventBus);
         ModRecipes.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+        ModDataComponents.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Ore_trees_reborn) to respond directly to events.

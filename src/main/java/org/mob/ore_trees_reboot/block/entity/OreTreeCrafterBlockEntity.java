@@ -29,7 +29,7 @@ import org.mob.ore_trees_reboot.inventory.SlotFilteredItemHandler;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.recipe.OreTreeCrafterRecipe;
 import org.mob.ore_trees_reboot.recipe.input.OreTreeCrafterRecipeInput;
-import org.mob.ore_trees_reboot.screen.custom.OreTreeCrafterMenu;
+import org.mob.ore_trees_reboot.screen.menu.OreTreeCrafterMenu;
 
 import java.util.ArrayList;
 import java.util.List;

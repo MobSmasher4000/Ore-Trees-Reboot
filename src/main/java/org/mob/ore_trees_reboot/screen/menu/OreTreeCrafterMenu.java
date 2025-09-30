@@ -1,4 +1,4 @@
-package org.mob.ore_trees_reboot.screen.custom;
+package org.mob.ore_trees_reboot.screen.menu;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;

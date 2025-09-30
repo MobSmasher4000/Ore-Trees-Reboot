@@ -9,9 +9,9 @@ import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.mob.ore_trees_reboot.Ore_trees_reboot;
-import org.mob.ore_trees_reboot.screen.custom.OreTreeCrafterMenu;
-import org.mob.ore_trees_reboot.screen.custom.OreTreeReconstructorMenu;
-import org.mob.ore_trees_reboot.screen.custom.ResourceProcessorMenu;
+import org.mob.ore_trees_reboot.screen.menu.OreTreeCrafterMenu;
+import org.mob.ore_trees_reboot.screen.menu.OreTreeReconstructorMenu;
+import org.mob.ore_trees_reboot.screen.menu.ResourceProcessorMenu;
 
 public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
