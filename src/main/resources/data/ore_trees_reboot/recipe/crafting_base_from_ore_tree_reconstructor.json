@@ -1,9 +1,0 @@
-{
-  "type": "ore_trees_reboot:ore_tree_reconstructor",
-  "ingredient": {
-    "tag": "minecraft:saplings"
-  },
-  "result": {
-    "id": "ore_trees_reboot:crafting_base"
-  }
-}

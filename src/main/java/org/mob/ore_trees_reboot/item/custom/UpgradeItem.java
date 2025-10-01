@@ -9,16 +9,8 @@ import org.mob.ore_trees_reboot.component.ModDataComponents;
 import java.util.List;
 
 public class UpgradeItem extends Item {
-    private boolean glint = false;
-
-    public UpgradeItem(Properties properties){
+    public UpgradeItem(Properties properties) {
         super(properties);
-        this.glint = false;
-    }
-
-    public UpgradeItem(Properties properties, boolean glint) {
-        super(properties);
-        this.glint = glint;
     }
 
     @Override
@@ -34,10 +26,5 @@ public class UpgradeItem extends Item {
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-    }
-
-    @Override
-    public boolean isFoil(ItemStack stack) {
-        return glint;
     }
 }

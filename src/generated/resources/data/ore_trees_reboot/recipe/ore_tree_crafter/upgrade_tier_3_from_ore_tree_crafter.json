@@ -1,0 +1,47 @@
+{
+  "type": "ore_trees_reboot:ore_tree_crafter",
+  "ingredients": [
+    {
+      "count": 1,
+      "item": "ore_trees_reboot:upgrade_base"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:iron_block"
+    },
+    {
+      "count": 1,
+      "item": "ore_trees_reboot:upgrade_amount_tier_3"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:iron_block"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:gold_block"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:gold_block"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:iron_block"
+    },
+    {
+      "count": 1,
+      "item": "ore_trees_reboot:upgrade_speed_tier_4"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:iron_block"
+    }
+  ],
+  "output": [
+    {
+      "count": 1,
+      "id": "ore_trees_reboot:upgrade_tier_3"
+    }
+  ]
+}

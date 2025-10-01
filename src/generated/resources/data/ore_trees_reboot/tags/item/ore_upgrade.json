@@ -1,0 +1,21 @@
+{
+  "values": [
+    "ore_trees_reboot:upgrade_base",
+    "ore_trees_reboot:upgrade_speed_tier_1",
+    "ore_trees_reboot:upgrade_speed_tier_2",
+    "ore_trees_reboot:upgrade_speed_tier_3",
+    "ore_trees_reboot:upgrade_speed_tier_4",
+    "ore_trees_reboot:upgrade_amount_tier_1",
+    "ore_trees_reboot:upgrade_amount_tier_2",
+    "ore_trees_reboot:upgrade_amount_tier_3",
+    "ore_trees_reboot:upgrade_amount_tier_4",
+    "ore_trees_reboot:upgrade_amount_tier_5",
+    "ore_trees_reboot:upgrade_amount_tier_6",
+    "ore_trees_reboot:upgrade_tier_1",
+    "ore_trees_reboot:upgrade_tier_2",
+    "ore_trees_reboot:upgrade_tier_3",
+    "ore_trees_reboot:upgrade_tier_4",
+    "ore_trees_reboot:upgrade_tier_5",
+    "ore_trees_reboot:upgrade_tier_6"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "ore_trees_reboot:resource_processor",
+  "ingredient": {
+    "item": "ore_trees_reboot:lapis_log"
+  },
+  "result": {
+    "count": 8,
+    "id": "minecraft:lapis_lazuli"
+  }
+}

@@ -36,6 +36,9 @@ public class ResourceProcessorMenu extends AbstractContainerMenu {
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 46, 50));
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 46, 68));
 
+//        upgrade slot
+        this.addSlot(new SlotItemHandler(blockEntity.upgradeHandler, 0, 145, 9));
+
 //        output slots
         this.addSlot(new OutputSlot(blockEntity.itemHandler, 3, 113, 32));
         this.addSlot(new OutputSlot(blockEntity.itemHandler, 4, 131, 32));

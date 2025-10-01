@@ -31,7 +31,7 @@ public class OreTreeCrafterRecipeCategory implements IRecipeCategory<OreTreeCraf
     private final IDrawable icon;
 
     public OreTreeCrafterRecipeCategory(IGuiHelper helper){
-        this.background = helper.createDrawable(TEXTURE, 5, 5, 250, 95);
+        this.background = helper.createDrawable(TEXTURE, 5, 5, 200, 95);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.ORE_TREE_CRAFTER.get()));
     }
 

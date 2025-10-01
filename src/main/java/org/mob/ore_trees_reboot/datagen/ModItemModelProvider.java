@@ -19,6 +19,29 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(ModItems.Crafting_Base.get());
+
+        basicItem(ModItems.UPGRADE_BASE.get());
+
+        basicItem(ModItems.UPGRADE_SPEED_TIER_1.get());
+        basicItem(ModItems.UPGRADE_SPEED_TIER_2.get());
+        basicItem(ModItems.UPGRADE_SPEED_TIER_3.get());
+        basicItem(ModItems.UPGRADE_SPEED_TIER_4.get());
+
+        basicItem(ModItems.UPGRADE_AMOUNT_TIER_1.get());
+        basicItem(ModItems.UPGRADE_AMOUNT_TIER_2.get());
+        basicItem(ModItems.UPGRADE_AMOUNT_TIER_3.get());
+        basicItem(ModItems.UPGRADE_AMOUNT_TIER_4.get());
+        basicItem(ModItems.UPGRADE_AMOUNT_TIER_5.get());
+        basicItem(ModItems.UPGRADE_AMOUNT_TIER_6.get());
+
+        basicItem(ModItems.UPGRADE_TIER_1.get());
+        basicItem(ModItems.UPGRADE_TIER_2.get());
+        basicItem(ModItems.UPGRADE_TIER_3.get());
+        basicItem(ModItems.UPGRADE_TIER_4.get());
+        basicItem(ModItems.UPGRADE_TIER_5.get());
+        basicItem(ModItems.UPGRADE_TIER_6.get());
+
+
         basicItem(ModItems.ORE_TREE_SHARD.get());
         saplingItem(ModBlocks.IRON_SAPLING);
         saplingItem(ModBlocks.GOLD_SAPLING);

@@ -1,0 +1,10 @@
+{
+  "type": "ore_trees_reboot:resource_processor",
+  "ingredient": {
+    "item": "ore_trees_reboot:quartz_log"
+  },
+  "result": {
+    "count": 4,
+    "id": "minecraft:quartz"
+  }
+}

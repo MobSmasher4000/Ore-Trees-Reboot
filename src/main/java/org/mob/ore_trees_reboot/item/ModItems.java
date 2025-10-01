@@ -84,11 +84,6 @@ public class ModItems {
 
     public static final DeferredItem<Item> UPGRADE_AMOUNT_TIER_6 = ITEMS.register("upgrade_amount_tier_6",
             ()-> new UpgradeItem(new Item.Properties().stacksTo(16)
-                    .component(ModDataComponents.AMOUNT, 48)
-                    .component(ModDataComponents.SPEED, 100)));
-
-    public static final DeferredItem<Item> UPGRADE_AMOUNT_TIER_7 = ITEMS.register("upgrade_amount_tier_7",
-            ()-> new UpgradeItem(new Item.Properties().stacksTo(16)
                     .component(ModDataComponents.AMOUNT, 64)
                     .component(ModDataComponents.SPEED, 100)));
 
@@ -96,37 +91,32 @@ public class ModItems {
     public static final DeferredItem<Item> UPGRADE_TIER_1 = ITEMS.register("upgrade_tier_1",
         ()->new UpgradeItem(new Item.Properties().stacksTo(16)
                 .component(ModDataComponents.AMOUNT, 2)
-                .component(ModDataComponents.SPEED, 20), true));
+                .component(ModDataComponents.SPEED, 20)));
 
     public static final DeferredItem<Item> UPGRADE_TIER_2 = ITEMS.register("upgrade_tier_2",
         ()->new UpgradeItem(new Item.Properties().stacksTo(16)
                 .component(ModDataComponents.AMOUNT, 4)
-                .component(ModDataComponents.SPEED, 20), true));
+                .component(ModDataComponents.SPEED, 20)));
 
     public static final DeferredItem<Item> UPGRADE_TIER_3 = ITEMS.register("upgrade_tier_3",
         ()->new UpgradeItem(new Item.Properties().stacksTo(16)
                 .component(ModDataComponents.AMOUNT, 8)
-                .component(ModDataComponents.SPEED, 20), true));
+                .component(ModDataComponents.SPEED, 20)));
 
     public static final DeferredItem<Item> UPGRADE_TIER_4 = ITEMS.register("upgrade_tier_4",
         ()->new UpgradeItem(new Item.Properties().stacksTo(16)
                 .component(ModDataComponents.AMOUNT, 16)
-                .component(ModDataComponents.SPEED, 20), true));
+                .component(ModDataComponents.SPEED, 20)));
 
     public static final DeferredItem<Item> UPGRADE_TIER_5 = ITEMS.register("upgrade_tier_5",
         ()->new UpgradeItem(new Item.Properties().stacksTo(16)
                 .component(ModDataComponents.AMOUNT, 32)
-                .component(ModDataComponents.SPEED, 20), true));
+                .component(ModDataComponents.SPEED, 20)));
 
     public static final DeferredItem<Item> UPGRADE_TIER_6 = ITEMS.register("upgrade_tier_6",
         ()->new UpgradeItem(new Item.Properties().stacksTo(16)
-                .component(ModDataComponents.AMOUNT, 48)
-                .component(ModDataComponents.SPEED, 20), true));
-
-    public static final DeferredItem<Item> UPGRADE_TIER_7 = ITEMS.register("upgrade_tier_7",
-        ()->new UpgradeItem(new Item.Properties().stacksTo(16)
                 .component(ModDataComponents.AMOUNT, 64)
-                .component(ModDataComponents.SPEED, 20), true));
+                .component(ModDataComponents.SPEED, 20)));
 
 
     public static void register(IEventBus eventBus){

@@ -24,11 +24,13 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
+import org.mob.ore_trees_reboot.component.ModDataComponents;
 import org.mob.ore_trees_reboot.inventory.SlotFilteredItemHandler;
 import org.mob.ore_trees_reboot.recipe.ModRecipes;
 import org.mob.ore_trees_reboot.recipe.ResourceProcessorRecipe;
 import org.mob.ore_trees_reboot.recipe.input.ResourceProcessorRecipeInput;
 import org.mob.ore_trees_reboot.screen.menu.ResourceProcessorMenu;
+import org.mob.ore_trees_reboot.util.ModTags;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -40,10 +42,40 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
-            if (!level.isClientSide()) {
-                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+        }
+    };
+
+    private int maxProgress;
+    private int inputAmountPerProcess;
+
+    public final ItemStackHandler upgradeHandler = new ItemStackHandler(1){
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            updateUpgrades();
+        }
+
+        private void updateUpgrades() {
+            ItemStack stack = getStackInSlot(0);
+
+            if (stack.get(ModDataComponents.SPEED) != null) {
+                maxProgress = stack.get(ModDataComponents.SPEED);
+            } else {
+                maxProgress = 100;
+            }
+
+            if (stack.get(ModDataComponents.AMOUNT) != null) {
+                inputAmountPerProcess = stack.get(ModDataComponents.AMOUNT);
+            } else {
+                inputAmountPerProcess = 1;
             }
         }
+
+        @Override
+        public boolean isItemValid(int slot, ItemStack stack) {
+            return stack.is(ModTags.Items.ORE_UPGRADES);
+        }
+
     };
 
     // Unified automation handler: insert only into 0–2, extract only from 3–11
@@ -54,7 +86,7 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
 
 
     // --- Energy handler ---
-    private final EnergyStorage energyStorage = new EnergyStorage(100_000, 10_000, 10_000);
+    private final EnergyStorage energyStorage = new EnergyStorage(10_000_000, 30_000, 30_000);
 
     // Helper getters (like normal variables)
     public int getEnergy() {
@@ -71,7 +103,6 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 100;
     private int activeInputSlot = 0; // tracks the currently processing input slot
 
     public ResourceProcessorBlockEntity(BlockPos pos, BlockState blockState) {
@@ -93,7 +124,7 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
                 switch (i) {
                     case 0 -> ResourceProcessorBlockEntity.this.progress = value;
                     case 1 -> ResourceProcessorBlockEntity.this.maxProgress = value;
-                    case 2 -> ResourceProcessorBlockEntity.this.energyStorage.receiveEnergy(value - energyStorage.getEnergyStored(), false);
+                    case 2 -> ((MutableEnergyStorage) energyStorage).setEnergyStored(value);
                 }
             }
 
@@ -116,10 +147,11 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
     }
 
     public void drops() {
-        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots() + upgradeHandler.getSlots());
         for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
+        inventory.addItem(upgradeHandler.getStackInSlot(0));
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
@@ -172,7 +204,6 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         int energy = this.energyStorage.getEnergyStored();
         int energyPerTick = 200;
         if (energy < energyPerTick) {
-            resetProgress();
             return;
         }
 
@@ -194,8 +225,28 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         Optional<RecipeHolder<ResourceProcessorRecipe>> recipe = getCurrentRecipe(inputSlot);
         if (recipe.isEmpty()) return false;
 
-        ItemStack output = recipe.get().value().output();
-        return getNextAvailableOutputSlot(output) != -1;
+        ItemStack outputTemplate = recipe.get().value().output().copy();
+        ItemStack inputStack = itemHandler.getStackInSlot(inputSlot);
+
+        int amountToProcess = Math.min(inputAmountPerProcess, inputStack.getCount());
+        int totalOutputCount = outputTemplate.getCount() * amountToProcess;
+
+        // Check if total available space across all output slots can fit totalOutputCount
+        int availableSpace = 0;
+        for (int slot : OUTPUT_SLOT) {
+            ItemStack current = itemHandler.getStackInSlot(slot);
+
+            if (current.isEmpty() || current.getItem() == outputTemplate.getItem()) {
+                int maxStack = current.isEmpty() ? outputTemplate.getMaxStackSize() : current.getMaxStackSize();
+                availableSpace += maxStack - current.getCount();
+            }
+
+            if (availableSpace >= totalOutputCount) {
+                return true; // enough space
+            }
+        }
+
+        return false; // not enough space in total
     }
 
     private Optional<RecipeHolder<ResourceProcessorRecipe>> getCurrentRecipe(int inputSlot) {
@@ -209,17 +260,36 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         if (recipe.isEmpty()) return;
 
         ItemStack output = recipe.get().value().output();
-        int slot = getNextAvailableOutputSlot(output);
-        if (slot == -1) return; // no available output slot
 
-        itemHandler.extractItem(inputSlot, 1, false);
+        // Determine how many input items are available
+        ItemStack inputStack = itemHandler.getStackInSlot(inputSlot);
+        int amountToProcess = Math.min(inputAmountPerProcess, inputStack.getCount());
 
-        ItemStack current = itemHandler.getStackInSlot(slot);
-        if (current.isEmpty()) {
-            itemHandler.setStackInSlot(slot, output.copy());
-        } else {
-            current.grow(output.getCount());
-            itemHandler.setStackInSlot(slot, current);
+        // Multiply output count by processed input amount
+        int totalOutputCount = output.getCount() * amountToProcess;
+
+        // Extract input
+        itemHandler.extractItem(inputSlot, amountToProcess, false);
+
+        // Distribute output across available slots
+        while (totalOutputCount > 0) {
+            int slot = getNextAvailableOutputSlot(output);
+            if (slot == -1) break; // no available output slot
+
+            ItemStack current = itemHandler.getStackInSlot(slot);
+            int maxAdd = current.isEmpty() ? output.getMaxStackSize() : current.getMaxStackSize() - current.getCount();
+            int toAdd = Math.min(maxAdd, totalOutputCount);
+
+            if (current.isEmpty()) {
+                ItemStack stack = output.copy();
+                stack.setCount(toAdd);
+                itemHandler.setStackInSlot(slot, stack);
+            } else {
+                current.grow(toAdd);
+                itemHandler.setStackInSlot(slot, current);
+            }
+
+            totalOutputCount -= toAdd;
         }
     }
 
@@ -227,8 +297,8 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         for (int slot : OUTPUT_SLOT) {
             ItemStack stackInSlot = itemHandler.getStackInSlot(slot);
             if (stackInSlot.isEmpty() || stackInSlot.getItem() == output.getItem()) {
-                int maxCount = stackInSlot.isEmpty() ? 64 : stackInSlot.getMaxStackSize();
-                if (stackInSlot.getCount() + output.getCount() <= maxCount) {
+                int maxCount = stackInSlot.isEmpty() ? output.getMaxStackSize() : stackInSlot.getMaxStackSize();
+                if (stackInSlot.getCount() < maxCount) {
                     return slot;
                 }
             }
@@ -238,7 +308,6 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
 
     private void resetProgress() {
         this.progress = 0;
-        this.maxProgress = maxProgress;
     }
 
     private boolean hasCraftingFinished() {
@@ -266,6 +335,17 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
 
     public @Nullable EnergyStorage getEnergyStorage(@Nullable Direction side) {
         return energyStorage;
+    }
+
+    // --- Custom energy storage with setter ---
+    private static class MutableEnergyStorage extends EnergyStorage {
+        public MutableEnergyStorage(int capacity, int maxReceive, int maxExtract) {
+            super(capacity, maxReceive, maxExtract);
+        }
+
+        public void setEnergyStored(int energy) {
+            this.energy = Math.min(energy, capacity);
+        }
     }
 
 }

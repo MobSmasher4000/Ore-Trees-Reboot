@@ -1,0 +1,10 @@
+{
+  "type": "ore_trees_reboot:resource_processor",
+  "ingredient": {
+    "item": "ore_trees_reboot:emerald_log"
+  },
+  "result": {
+    "count": 2,
+    "id": "minecraft:emerald"
+  }
+}

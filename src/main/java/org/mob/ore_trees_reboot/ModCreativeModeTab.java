@@ -32,7 +32,6 @@ public class ModCreativeModeTab {
         output.accept(ModItems.UPGRADE_AMOUNT_TIER_4.get());
         output.accept(ModItems.UPGRADE_AMOUNT_TIER_5.get());
         output.accept(ModItems.UPGRADE_AMOUNT_TIER_6.get());
-        output.accept(ModItems.UPGRADE_AMOUNT_TIER_7.get());
 
         output.accept(ModItems.UPGRADE_TIER_1.get());
         output.accept(ModItems.UPGRADE_TIER_2.get());
@@ -40,7 +39,6 @@ public class ModCreativeModeTab {
         output.accept(ModItems.UPGRADE_TIER_4.get());
         output.accept(ModItems.UPGRADE_TIER_5.get());
         output.accept(ModItems.UPGRADE_TIER_6.get());
-        output.accept(ModItems.UPGRADE_TIER_7.get());
 
         output.accept(ModBlocks.ORE_TREE_RECONSTRUCTOR.get());
         output.accept(ModBlocks.RESOURCE_PROCESSOR.get());

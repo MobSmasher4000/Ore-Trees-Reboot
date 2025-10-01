@@ -3,7 +3,7 @@
 
   "item.ore_trees_reboot.crafting_base": "Ore Trees Crafting Base",
   "item.ore_trees_reboot.ore_tree_shard": "Ore Trees Crafting Shard",
-  "tooltip.ore_trees_reboot.ore_tree_shard": "Drops from leaves with about 20% chance",
+  "tooltip.ore_trees_reboot.ore_tree_shard": "Drops from leaves with about 50% chance",
   "tooltip.ore_trees_reboot.iron_dirt": "A dirt made with high witchcraft advancements disguised as a block of iron, but still a dirt",
   "tooltip.ore_trees_reboot.gold_dirt": "A dirt made with high witchcraft advancements disguised as a block of gold, but still a dirt",
   "tooltip.ore_trees_reboot.copper_dirt": "A dirt made with high witchcraft advancements disguised as a block of copper, but still a dirt",
@@ -28,7 +28,6 @@
   "item.ore_trees_reboot.upgrade_amount_tier_4": "Amount Upgrade 4",
   "item.ore_trees_reboot.upgrade_amount_tier_5": "Amount Upgrade 5",
   "item.ore_trees_reboot.upgrade_amount_tier_6": "Amount Upgrade 6",
-  "item.ore_trees_reboot.upgrade_amount_tier_7": "Amount Upgrade 7",
 
   "item.ore_trees_reboot.upgrade_tier_1": "Stack-Amount Upgrade 1",
   "item.ore_trees_reboot.upgrade_tier_2": "Stack-Amount Upgrade 2",
@@ -36,7 +35,6 @@
   "item.ore_trees_reboot.upgrade_tier_4": "Stack-Amount Upgrade 4",
   "item.ore_trees_reboot.upgrade_tier_5": "Stack-Amount Upgrade 5",
   "item.ore_trees_reboot.upgrade_tier_6": "Stack-Amount Upgrade 6",
-  "item.ore_trees_reboot.upgrade_tier_7": "Stack-Amount Upgrade 7",
 
   "block.ore_trees_reboot.ore_tree_reconstructor": "Ore Tree Reconstructor",
   "block.ore_trees_reboot.ore_tree_crafter": "Ore Tree Crafter",

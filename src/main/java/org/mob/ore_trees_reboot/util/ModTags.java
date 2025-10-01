@@ -22,6 +22,10 @@ public class ModTags {
 
     public static class Items{
 
+        public static final TagKey<Item> ORE_UPGRADES = createTag("ore_upgrade");
+        public static final TagKey<Item> ORE_UPGRADES_SPEED = createTag("ore_upgrade_speed");
+        public static final TagKey<Item> ORE_UPGRADES_AMOUNT = createTag("ore_upgrade_amount");
+
         public static TagKey<Item> createTag(String name){
             return ItemTags.create(resourceLocation(name));
         }
