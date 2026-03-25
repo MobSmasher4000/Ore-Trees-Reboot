@@ -271,15 +271,15 @@ public class ModBlocks {
 
     //    Ore Tree Reconstructor
     public static final DeferredBlock<Block> ORE_TREE_RECONSTRUCTOR = registerBlock("ore_tree_reconstructor",
-            ()-> new OreTreeReconstructorBlock(BlockBehaviour.Properties.of()));
+            ()-> new OreTreeReconstructorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
 
 //    Resource Processor
     public static final DeferredBlock<Block> RESOURCE_PROCESSOR = registerBlock("resource_processor",
-            () -> new ResourceProcessorBlock(BlockBehaviour.Properties.of()));
+            () -> new ResourceProcessorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
 
     //    Ore Tree Crafter
     public static final DeferredBlock<Block> ORE_TREE_CRAFTER = registerBlock("ore_tree_crafter",
-            ()-> new OreTreeCrafterBlock(BlockBehaviour.Properties.of()));
+            ()-> new OreTreeCrafterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
 
 //    Ore Tree Dirts
     public static final DeferredBlock<Block> IRON_DIRT = registerBlock("iron_dirt",

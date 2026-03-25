@@ -3,7 +3,9 @@ package org.mob.ore_trees_reboot.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -98,5 +100,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.COAL_LOG.get())
                 .add(ModBlocks.EMERALD_LOG.get())
         ;
+
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.ORE_TREE_CRAFTER.get())
+                .add(ModBlocks.ORE_TREE_RECONSTRUCTOR.get())
+                .add(ModBlocks.RESOURCE_PROCESSOR.get());
     }
 }

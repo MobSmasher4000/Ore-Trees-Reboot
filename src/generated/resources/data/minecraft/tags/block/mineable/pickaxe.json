@@ -9,6 +9,9 @@
     "ore_trees_reboot:redstone_dirt",
     "ore_trees_reboot:quartz_dirt",
     "ore_trees_reboot:coal_dirt",
-    "ore_trees_reboot:emerald_dirt"
+    "ore_trees_reboot:emerald_dirt",
+    "ore_trees_reboot:ore_tree_crafter",
+    "ore_trees_reboot:ore_tree_reconstructor",
+    "ore_trees_reboot:resource_processor"
   ]
 }

@@ -45,8 +45,8 @@ public class ResourceProcessorBlockEntity extends BlockEntity implements MenuPro
         }
     };
 
-    private int maxProgress;
-    private int inputAmountPerProcess;
+    private int maxProgress = 100;
+    private int inputAmountPerProcess = 1;
 
     public final ItemStackHandler upgradeHandler = new ItemStackHandler(1){
         @Override
