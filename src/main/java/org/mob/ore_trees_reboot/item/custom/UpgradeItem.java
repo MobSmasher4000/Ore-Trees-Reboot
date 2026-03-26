@@ -9,8 +9,10 @@ import org.mob.ore_trees_reboot.component.ModDataComponents;
 import java.util.List;
 
 public class UpgradeItem extends Item {
-    public UpgradeItem(Properties properties) {
-        super(properties);
+    public UpgradeItem(Properties properties,int speed, int amount) {
+        super(properties.stacksTo(16)
+                .component(ModDataComponents.SPEED, speed)
+                .component(ModDataComponents.AMOUNT, amount));
     }
 
     @Override
